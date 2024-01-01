@@ -1,0 +1,32 @@
+.container {
+  max-width: 535px;
+
+  .blockText {
+    padding: 4.675%;
+    border: 1px solid red;
+
+    > h2 {
+      font-size: clamp(var(--f-s-light), 5vw, var(--f-s-mediumL));
+      margin: 0 0 10px;
+    }
+
+    .data{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: Roboto, sans-serif;
+      font-size: var(--f-s-light);
+
+      > p {
+        color: var(--color-light-300);
+        margin: 0 10px 0 0;
+      }
+
+      .btn {
+        background: transparent;
+        color: var(--color-err-500);
+      }
+
+    }
+  }
+}

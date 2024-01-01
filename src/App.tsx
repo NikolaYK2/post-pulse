@@ -1,10 +1,10 @@
-import {Post} from "@/features/post/Post.tsx";
+import {Main} from "@/features/main/Main.tsx";
 
 function App() {
 
   return (
     <div>
-      <Post/>
+      <Main/>
     </div>
   )
 }
