@@ -1,0 +1,39 @@
+@font-face {
+  font-family: 'League Spartan';
+  src: local('@/assets/fonts/spartan/LeagueSpartan-Bold.eot');
+  src: url('@/assets/fonts/spartan/LeagueSpartan-Bold.eot?#iefix') format('embedded-opentype'),
+  url('@/assets/fonts/spartan/LeagueSpartan-Bold.woff2') format('woff2'),
+  url('@/assets/fonts/spartan/LeagueSpartan-Bold.woff') format('woff'),
+  url('@/assets/fonts/spartan/LeagueSpartan-Bold.ttf') format('truetype'),
+  url('@/assets/fonts/spartan/LeagueSpartan-Bold.svg#LeagueSpartan-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: local('@/assets/fonts/roboto/Roboto-Medium.eot');
+  src: url('@/assets/fonts/roboto/Roboto-Medium.eot?#iefix') format('embedded-opentype'),
+  url('@/assets/fonts/roboto/Roboto-Medium.woff2') format('woff2'),
+  url('@/assets/fonts/roboto/Roboto-Medium.woff') format('woff'),
+  url('@/assets/fonts/roboto/Roboto-Medium.ttf') format('truetype'),
+  url('@/assets/fonts/roboto/Roboto-Medium.svg#Roboto-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  //SPARTAN
+  --f-spartan: 'League Spartan', sans-serif;
+  //ROBOTO
+  --f-roboto: 'Roboto', sans-serif;
+
+  //FONTS SIZE -----------------
+  --f-s-light: 14;
+  --f-s-medium: 18;
+  --f-s-mediumL:22;
+  --f-s-big: 28;
+}
+
