@@ -1,10 +1,11 @@
+import {Post} from "@/features/post/Post.tsx";
 
 function App() {
 
   return (
-    <>
-      <div>HEEERRSSS!</div>
-    </>
+    <div>
+      <Post/>
+    </div>
   )
 }
 
