@@ -1,11 +1,11 @@
-import {Posts} from "@/features/main/posts/Posts.tsx";
+import {Posts} from "@/features/main/posts/ui/Posts.tsx";
+import s from './Main.module.scss'
 
 export const Main = () => {
 
-
   return (
-    <div>
-      <Posts/>
+    <div className={s.container}>
+      <Posts title={'Ost List'}/>
     </div>
   );
 };

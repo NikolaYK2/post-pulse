@@ -1,16 +1,50 @@
 .container {
-  max-width: 535px;
+  position: relative;
+  display: flex;
+  align-items: end;
+  //max-width: 535px;
+  width: 100%;
+  border-radius: 4px;
+  margin: 4px;
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    &:after {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: '';
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .2) 59%, rgba(0, 0, 0, .8) 100%);
+    }
+
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 
   .blockText {
+    position: relative;
     padding: 4.675%;
-    border: 1px solid red;
+    width: 100%;
+    z-index: 2;
 
     > h2 {
       font-size: clamp(var(--f-s-light), 5vw, var(--f-s-mediumL));
       margin: 0 0 10px;
+      color: var(--color-light-100);
     }
 
-    .data{
+    .data {
       display: flex;
       justify-content: space-between;
       align-items: center;
