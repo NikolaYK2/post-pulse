@@ -1,11 +1,11 @@
-import {Posts} from "@/features/main/posts/ui/Posts.tsx";
 import s from './Main.module.scss'
+import {Outlet} from "react-router-dom";
 
 export const Main = () => {
 
   return (
     <main className={s.container}>
-      <Posts title={'Ost List'}/>
+      <Outlet/>
     </main>
   );
 };
