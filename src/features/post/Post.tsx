@@ -5,11 +5,12 @@ import bcDefault from '@/assets/posts/bc/bcDefault.jpg'
 type Props = {
   title: string,
   data: string,
-  background?: string
+  background?: string,
+  className?:string,
 }
-export const Post = ({title, data, background}: Props) => {
+export const Post = ({title, data, background, className}: Props) => {
   return (
-    <div className={s.container}>
+    <div className={`${s.container} ${className}`}>
       <div className={s.background}>
         <img src={background || bcDefault} alt=""/>
       </div>
