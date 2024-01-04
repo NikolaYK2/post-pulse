@@ -43,7 +43,12 @@ export const Posts = ({title}: Props) => {
       </div>
       <div className={`${s.blockAllPosts} containerApp`}>
         <div className={s.item}>
-          <h2>{title}</h2>
+          <div className={s.title}>
+            <h2>{title}</h2>
+            <div className={s.decoration}>
+              <div>add</div>
+            </div>
+          </div>
           <div className={s.posts}>
             {posts.map(post => <Post key={post.id} title={post.title} data={post.data}
                                      background={post.background} className={s.post}/>)}
