@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Post} from "@/features/post/Post.tsx";
+import {Post} from "@/features/main/posts/ui/post/Post.tsx";
 import s from './Posts.module.scss'
 import marvel from '@/assets/posts/post/bcMarvel.jpg'
 import hearth from '@/assets/posts/post/bcHearts.jpg'

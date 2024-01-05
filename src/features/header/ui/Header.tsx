@@ -1,9 +1,10 @@
 import s from './Header.module.scss'
 import {IconSvg} from "@/common/components/iconSvg/IconSvg.tsx";
+import {NavLink} from "react-router-dom";
 
 export const Header = () => {
 
-  const pages = ['Home', 'Profile']
+  const pages = [{name:'Home', path:'home'}, {name:'Profile', path:'profile'}]
 
   return (
     <header className={s.container}>
@@ -17,7 +18,7 @@ export const Header = () => {
         </div>
         <nav className={s.nav}>
           <ul>
-            {pages.map(el => <li>{el}</li>)}
+            {pages.map(el => <li className={s.li}><NavLink to={el.path} className={({isActive})=> isActive ? s.active : ''}>{el.name}</NavLink></li>)}
           </ul>
         </nav>
       </section>
