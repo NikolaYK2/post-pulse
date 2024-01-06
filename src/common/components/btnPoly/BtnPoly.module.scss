@@ -1,4 +1,8 @@
-//.tertiary{
-//  font-family: var(--f-roboto);
-//  font-size: var(--f-s-light);
-//}
+.primary {
+  font-family: var(--f-roboto);
+  font-size: clamp(var(--f-s-light), 5vw, var(--f-s-medium));
+  background: var(--color-medium-500);
+  color: var(--color-light-100);
+  padding: 12px 30px;
+  border-radius: 4px;
+}
