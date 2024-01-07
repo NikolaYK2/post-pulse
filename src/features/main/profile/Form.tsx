@@ -1,5 +1,5 @@
 import s from './Form.module.scss'
-import {BtnPoly} from "@/common/components/btnPoly/BtnPoly.tsx";
+import {BtnPoly} from "@/common/components/ui/btnPoly/BtnPoly.tsx";
 
 
 export const Form = () => {

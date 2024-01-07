@@ -1,5 +1,5 @@
 import s from './Header.module.scss'
-import {IconSvg} from "@/common/components/iconSvg/IconSvg.tsx";
+import {IconSvg} from "@/common/components/ui/iconSvg/IconSvg.tsx";
 import {NavLink} from "react-router-dom";
 
 export const Header = () => {

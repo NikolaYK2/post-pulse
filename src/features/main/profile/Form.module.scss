@@ -22,5 +22,8 @@
     width: 100%;
     resize: vertical;
     padding: 1.37% 3.04%;
+    border: 1px solid var(--color-d-300);
+    border-radius: 4px;
+    font-size: clamp(var(--f-s-light), 5vw, var(--f-s-medium));
   }
 }

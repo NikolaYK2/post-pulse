@@ -4,7 +4,7 @@ import square from '@/assets/image/profile/square.jpg'
 import triangle from '@/assets/image/profile/triangle.jpg'
 import {createRef, useLayoutEffect} from "react";
 import {Form} from "@/features/main/profile/Form.tsx";
-import {IconSvg} from "@/common/components/iconSvg/IconSvg.tsx";
+import {IconSvg} from "@/common/components/ui/iconSvg/IconSvg.tsx";
 
 
 export const Profile = () => {

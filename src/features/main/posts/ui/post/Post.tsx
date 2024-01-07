@@ -1,5 +1,5 @@
 import s from './Post.module.scss'
-import {BtnPoly} from "@/common/components/btnPoly/BtnPoly.tsx";
+import {BtnPoly} from "@/common/components/ui/btnPoly/BtnPoly.tsx";
 import bcDefault from '@/assets/posts/bc/bcDefault.jpg'
 
 type Props = {

@@ -1,0 +1,40 @@
+.primary {
+  font-family: var(--f-roboto);
+  font-size: clamp(var(--f-s-light), 5vw, var(--f-s-medium));
+  background-image: linear-gradient(70deg, var(--color-medium-500) 45%, var(--color-d-900) 78%);
+  background-size: 100% auto;
+  background-position: right top;
+  transition: all .3s ease-in-out 0s;
+  padding: 12px 30px;
+  border-radius: 4px;
+  color: var(--color-d-900);
+
+  &:hover {
+    color: var(--color-d-100);
+    background-size: 200% auto;
+    background-position: left center;
+    transition: all .3s ease-in-out 0s;
+  }
+
+  &:active {
+    background-size: 150% 100%;
+    background-position: top right;
+    transition: all .1s ease-in-out 0s;
+  }
+
+  &:disabled:hover,
+  &:disabled:active {
+    background-size: 100% auto;
+    background-position: right top;
+    transition: none;
+    color: var(--color-d-900);
+  }
+  &:disabled{
+    opacity: 0.7;
+
+  }
+}
+
+.fullWidth{
+  width: 100%;
+}
