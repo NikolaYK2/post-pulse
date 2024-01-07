@@ -4,6 +4,7 @@ import s from './Posts.module.scss'
 import marvel from '@/assets/posts/post/bcMarvel.jpg'
 import hearth from '@/assets/posts/post/bcHearts.jpg'
 import racing from '@/assets/posts/post/bcPost.jpg'
+import {H2} from "@/common/components/ui/h2/H2.tsx";
 
 
 export type PostsType = {
@@ -44,10 +45,10 @@ export const Posts = ({title}: Props) => {
       <div className={`${s.blockAllPosts} containerApp`}>
         <div className={s.item}>
           <div className={s.title}>
-            <h2>{title}</h2>
-            <div className={s.decoration}>
-              <div>add</div>
-            </div>
+            <H2 title={title} side={"right"}/>
+              <div className={s.decoration}>
+                <div>add</div>
+              </div>
           </div>
           <div className={s.posts}>
             {posts.map(post => <Post key={post.id} title={post.title} data={post.data}
@@ -57,5 +58,5 @@ export const Posts = ({title}: Props) => {
         </div>
       </div>
     </section>
-  );
+);
 };

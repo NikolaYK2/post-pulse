@@ -1,0 +1,21 @@
+.h2 {
+  display: flex;
+  align-items: center;
+  font-size: clamp(var(--f-s-medium), 5vw, var(--f-s-big));
+
+  .circle{
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: var(--color-medium-500);
+    border-radius: 50%;
+  }
+
+  .left{
+    margin: 0 15px 0 0;
+  }
+
+  .right{
+    margin: 0 0 0 15px;
+  }
+}
