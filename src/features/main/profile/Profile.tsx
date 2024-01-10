@@ -24,7 +24,7 @@ export const Profile = () => {
       <div className={`containerApp ${s.block}`}>
         <div className={s.decoratorBc}>
           {images.map((img, index) => <img key={img.id} src={img.name} alt="img" ref={imgRefs[index]}/>)}
-          {svg.map((svg) => <div className={s.svg}><IconSvg name={svg}/></div>)}
+          {svg.map((svg) => <div key={svg} className={s.svg}><IconSvg name={svg}/></div>)}
         </div>
         <Form/>
       </div>

@@ -18,7 +18,7 @@ export const Header = () => {
         </div>
         <nav className={s.nav}>
           <ul>
-            {pages.map(el => <li className={s.li}><NavLink to={el.path} className={({isActive})=> isActive ? s.active : ''}>{el.name}</NavLink></li>)}
+            {pages.map(el => <li key={el.path} className={s.li}><NavLink to={el.path} className={({isActive})=> isActive ? s.active : ''}>{el.name}</NavLink></li>)}
           </ul>
         </nav>
       </section>

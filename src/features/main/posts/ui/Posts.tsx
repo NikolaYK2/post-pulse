@@ -1,35 +1,20 @@
-import {useState} from "react";
 import {Post} from "@/features/main/posts/ui/post/Post.tsx";
 import s from './Posts.module.scss'
-import marvel from '@/assets/posts/post/bcMarvel.jpg'
-import hearth from '@/assets/posts/post/bcHearts.jpg'
-import racing from '@/assets/posts/post/bcPost.jpg'
 import {H2} from "@/common/components/ui/h2/H2.tsx";
+import {usePosts} from "@/app/postRpovider/usePosts.tsx";
 
-
-export type PostsType = {
-  id: string,
-  title: string,
-  data: string,
-  background: string,
-}
 
 type Props = {
   title: string
 }
 export const Posts = ({title}: Props) => {
 
-  const [posts, setPosts] = useState<PostsType[]>([
-    {id: '1', title: 'Jon Bernthal Joins Ghost Recon Fantacy The Wildlands', data: '10/12/23', background: ''},
-    {id: '2', title: 'Marvel vs Capcom: Infinite release date set for September', data: '10/11/23', background: marvel},
-    {id: '3', title: 'Hearth stone fan game imagines new classes, 300+', data: '09/01/23', background: hearth},
-    {id: '4', title: 'Top 7 Best Car Racing Games for PC', data: '01/01/23', background: racing},
-  ])
-
+  const {posts} = usePosts()
 
   const getPost = (index: number) => {
     return posts[posts.length - index]
   }
+
 
   return (
     <section className={`${s.container}`}>
@@ -46,9 +31,9 @@ export const Posts = ({title}: Props) => {
         <div className={s.item}>
           <div className={s.title}>
             <H2 title={title} side={"right"}/>
-              <div className={s.decoration}>
-                <div>add</div>
-              </div>
+            <div className={s.decoration}>
+              <div>add</div>
+            </div>
           </div>
           <div className={s.posts}>
             {posts.map(post => <Post key={post.id} title={post.title} data={post.data}
@@ -58,5 +43,5 @@ export const Posts = ({title}: Props) => {
         </div>
       </div>
     </section>
-);
+  );
 };
