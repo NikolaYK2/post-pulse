@@ -9,21 +9,28 @@ type Props = {
 }
 export const Posts = ({title}: Props) => {
 
+
   const {posts} = usePosts()
 
   const getPost = (index: number) => {
+    if (index > posts.length) {
+      return null
+    }
     return posts[posts.length - index]
   }
 
+  const post1 = getPost(1);
+  const post2 = getPost(2);
+  const post3 = getPost(3);
 
   return (
     <section className={`${s.container}`}>
       <div className={`${s.blockNewPosts}`}>
         <div className={`${s.postOne} containerApp`}>
-          <Post title={getPost(1).title} data={getPost(1).data} background={getPost(1).background}/>
+          <Post id={post1?.id} title={post1?.title} data={post1?.data} background={post1?.background}/>
           <div className={s.postTwo}>
-            <Post title={getPost(2).title} data={getPost(2).data} background={getPost(2).background}/>
-            <Post title={getPost(3).title} data={getPost(3).data} background={getPost(3).background}/>
+            <Post id={post2?.id} title={post2?.title} data={post2?.data} background={post2?.background}/>
+            <Post id={post3?.id} title={post3?.title} data={post3?.data} background={post3?.background}/>
           </div>
         </div>
       </div>
@@ -36,7 +43,7 @@ export const Posts = ({title}: Props) => {
             </div>
           </div>
           <div className={s.posts}>
-            {posts.map(post => <Post key={post.id} title={post.title} data={post.data}
+            {posts.map(post => <Post key={post.id} id={post.id} title={post.title} data={post.data}
                                      background={post.background} className={s.post}/>)}
           </div>
 

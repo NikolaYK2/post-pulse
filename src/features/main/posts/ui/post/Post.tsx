@@ -1,14 +1,25 @@
 import s from './Post.module.scss'
 import {BtnPoly} from "@/common/components/ui/btnPoly/BtnPoly.tsx";
 import bcDefault from '@/assets/posts/bc/bcDefault.jpg'
+import {usePosts} from "@/app/postRpovider/usePosts.tsx";
 
 type Props = {
-  title: string,
-  data: string,
+  id?: string,
+  title?: string,
+  data?: string,
   background?: string,
-  className?:string,
+  className?: string,
 }
-export const Post = ({title, data, background, className}: Props) => {
+export const Post = ({id, title, data, background, className}: Props) => {
+
+  const {posts, setPosts} = usePosts()
+
+  const deletePostHandle = (id?: string) => {
+    setPosts(posts.filter(post => post.id !== id))
+  }
+
+  console.log(posts)
+
   return (
     <div className={`${s.container} ${className}`}>
       <div className={s.background}>
@@ -18,7 +29,7 @@ export const Post = ({title, data, background, className}: Props) => {
         <h2>{title}</h2>
         <div className={s.data}>
           <p>{data}</p>
-          <BtnPoly className={s.btn}>Delete</BtnPoly>
+          <BtnPoly className={s.btn} onClick={() => deletePostHandle(id)}>Delete</BtnPoly>
         </div>
       </div>
     </div>
