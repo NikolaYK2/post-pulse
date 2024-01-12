@@ -1,7 +1,8 @@
 import {Post} from "@/features/main/posts/ui/post/Post.tsx";
-import s from './Posts.module.scss'
 import {H2} from "@/common/components/ui/h2/H2.tsx";
 import {usePosts} from "@/app/postRpovider/usePosts.tsx";
+import s from './Posts.module.scss'
+import {EmptyState} from "@/common/components/ui/emptyState/EmptyState.tsx";
 
 
 type Props = {
@@ -42,10 +43,14 @@ export const Posts = ({title}: Props) => {
               <div>add</div>
             </div>
           </div>
-          <div className={s.posts}>
-            {posts.map(post => <Post key={post.id} id={post.id} title={post.title} data={post.data}
-                                     background={post.background} className={s.post}/>)}
-          </div>
+          {posts.length !== 0
+            ? <div className={s.posts}>
+              {posts.map(post => <Post key={post.id} id={post.id} title={post.title} data={post.data}
+                                       background={post.background} className={s.post}/>)}
+            </div>
+
+            : <EmptyState title={'No Posts'}/>
+          }
 
         </div>
       </div>

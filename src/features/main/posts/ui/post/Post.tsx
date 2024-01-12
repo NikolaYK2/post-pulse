@@ -18,8 +18,6 @@ export const Post = ({id, title, data, background, className}: Props) => {
     setPosts(posts.filter(post => post.id !== id))
   }
 
-  console.log(posts)
-
   return (
     <div className={`${s.container} ${className}`}>
       <div className={s.background}>

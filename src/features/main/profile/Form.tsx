@@ -17,8 +17,8 @@ type Props<T extends CommonFields> = {
 }
 export const Form = <T extends CommonFields>({posts, setPosts}: Props<T>) => {
   const [post, setPost] = useState({title: '', description: ''})
-  const uniqueId = `${Date.now()}-${Math.random()}`;
 
+  const uniqueId = `${Date.now()}-${Math.random()}`;
 
   const addTitleHandle = (e: ChangeEvent<HTMLInputElement>) => {
     setPost({...post, title: e.currentTarget.value})
