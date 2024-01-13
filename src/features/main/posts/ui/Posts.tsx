@@ -3,6 +3,8 @@ import {H2} from "@/common/components/ui/h2/H2.tsx";
 import {usePosts} from "@/app/postRpovider/usePosts.tsx";
 import s from './Posts.module.scss'
 import {EmptyState} from "@/common/components/ui/emptyState/EmptyState.tsx";
+import {SortNav} from "@/features/main/posts/ui/sortNav/SortNav.tsx";
+import {useEffect, useState} from "react";
 
 
 type Props = {
@@ -10,9 +12,8 @@ type Props = {
 }
 export const Posts = ({title}: Props) => {
 
-
   const {posts} = usePosts()
-
+  const [allPosts, setAllPosts] = useState(posts)
   const getPost = (index: number) => {
     if (index > posts.length) {
       return null
@@ -23,6 +24,10 @@ export const Posts = ({title}: Props) => {
   const post1 = getPost(1);
   const post2 = getPost(2);
   const post3 = getPost(3);
+
+  useEffect(() => {
+    setAllPosts(posts);
+  }, [posts]);
 
   return (
     <section className={`${s.container}`}>
@@ -35,18 +40,22 @@ export const Posts = ({title}: Props) => {
           </div>
         </div>
       </div>
+
       <div className={`${s.blockAllPosts} containerApp`}>
         <div className={s.item}>
           <div className={s.title}>
             <H2 title={title} side={"right"}/>
+
             <div className={s.decoration}>
-              <div>add</div>
+              <SortNav allPosts={allPosts} setAllPosts={setAllPosts}/>
             </div>
+
           </div>
+
           {posts.length !== 0
             ? <div className={s.posts}>
-              {posts.map(post => <Post key={post.id} id={post.id} title={post.title} data={post.data}
-                                       background={post.background} className={s.post}/>)}
+              {allPosts.map(post => <Post key={post.id} id={post.id} title={post.title} data={post.data}
+                                          background={post.background} className={s.post}/>)}
             </div>
 
             : <EmptyState title={'No Posts'}/>

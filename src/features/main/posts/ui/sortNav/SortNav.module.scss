@@ -1,0 +1,26 @@
+.container {
+  .blockItem {
+    display: flex;
+    font-size: var(--f-s-light);
+    color: var(--color-d-300);
+
+    > li {
+      padding: 5px 10px;
+      border-top: 1px solid var(--color-d-300);
+      border-bottom: 1px solid var(--color-d-300);
+
+      &:first-child {
+        border-left: 1px solid var(--color-d-300);
+      }
+
+      &:last-child {
+        border-right: 1px solid var(--color-d-300);
+      }
+
+      .btn {
+        all: unset;
+        cursor: pointer;
+      }
+    }
+  }
+}
