@@ -1,13 +1,17 @@
 
 .container {
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   width: 30px;
   height: 40px;
   transition: all 1s ease 0s;
   overflow: hidden;
+  z-index: 1;
 
+  @media (max-width: 767px) {
+    display: flex;
+  }
 
   .menuBurger {
     display: flex;
@@ -35,8 +39,8 @@
     }
 
     .span1,
-    .span3{
-      &:after{
+    .span3 {
+      &:after {
         display: flex;
         content: '';
         width: 100%;
@@ -46,14 +50,16 @@
       }
     }
 
-    .span1{
+    .span1 {
       top: 0;
     }
+
     .span2 {
       top: 50%;
       transform: translateY(-50%);
       width: 70%;
     }
+
     .span3 {
       bottom: 0;
     }
@@ -86,5 +92,20 @@
         transform: rotate(45deg) translate(145%, -50%);
       }
     }
+  }
+}
+
+.activeNav {
+  display: flex;
+  transform: translateY(0%);
+
+  transition: all 1s ease 0s;
+}
+
+.navOff {
+  @media (max-width: 767px) {
+    display: flex;
+    transform: translateY(-100%);
+    transition: all 1s ease 0s;
   }
 }

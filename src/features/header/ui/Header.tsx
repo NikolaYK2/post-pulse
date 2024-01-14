@@ -6,7 +6,9 @@ import {MenuBurger} from "@/features/header/ui/menuBurger/MenuBurger.tsx";
 
 export const Header = () => {
   const pages = [{name: 'Home', path: 'home'}, {name: 'Profile', path: 'profile'}]
-  const [modNav, setModNav] = useState(s.headerNav)
+
+  const [modNav, setModNav] = useState('')
+
 
 
   return (
@@ -20,7 +22,7 @@ export const Header = () => {
           </div>
         </div>
 
-        <MenuBurger setModNav={setModNav}/>
+        <MenuBurger setModNav={setModNav} modNav={modNav}/>
 
         <nav className={`${s.nav} ${modNav}`}>
           <ul>
