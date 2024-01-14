@@ -3,24 +3,34 @@
     display: flex;
     font-size: var(--f-s-light);
     color: var(--color-d-300);
+    border: 1px solid var(--color-d-300);
+    background: transparent;
 
-    > li {
-      padding: 5px 10px;
-      border-top: 1px solid var(--color-d-300);
-      border-bottom: 1px solid var(--color-d-300);
+    .btn {
+      all: unset;
+      cursor: pointer;
+      padding: 5px 15px;
+      background: transparent;
+      transition: background .3s ease 0s;
 
-      &:first-child {
-        border-left: 1px solid var(--color-d-300);
-      }
-
-      &:last-child {
-        border-right: 1px solid var(--color-d-300);
-      }
-
-      .btn {
-        all: unset;
-        cursor: pointer;
+      &:hover, .isActive {
+        background: var(--color-medium-500);
+        color: var(--color-light-100);
+        outline: 1px solid var(--color-medium-500);
+        box-shadow: var(--color-medium-sh);
+        transition: background .3s ease 0s,
+        color .3s ease 0s,
+        box-shadow .3s ease 0s;
       }
     }
+
+    .isActive {
+      background: var(--color-medium-500);
+      color: var(--color-light-100);
+      outline: 1px solid var(--color-medium-500);
+      box-shadow: var(--color-medium-sh);
+
+    }
+
   }
 }

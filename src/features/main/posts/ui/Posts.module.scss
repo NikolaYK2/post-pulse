@@ -85,6 +85,7 @@
         margin: 1%;
         @media (max-width: 600px) {
           flex: 1 1 31%;
+          min-width: 200px;
         }
 
       }
