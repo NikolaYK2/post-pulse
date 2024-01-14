@@ -37,7 +37,8 @@ export const SortNav = ({allPosts, setAllPosts}: Props) => {
     <nav className={s.container}>
       <ul className={s.blockItem}>
         {sortArr.map(el =>
-          <BtnPoly key={el.name} className={`${s.btn} ${el.isActive ? s.isActive : ''}`}
+          <BtnPoly key={el.name}
+                   className={`${s.btn} ${el.isActive ? s.isActive : ''}`}
                    onClick={() => sortHandle(el.name)}>
             {el.name}
           </BtnPoly>

@@ -1,10 +1,13 @@
 import s from './Header.module.scss'
 import {IconSvg} from "@/common/components/ui/iconSvg/IconSvg.tsx";
 import {NavLink} from "react-router-dom";
+import {useState} from "react";
+import {MenuBurger} from "@/features/header/ui/menuBurger/MenuBurger.tsx";
 
 export const Header = () => {
+  const pages = [{name: 'Home', path: 'home'}, {name: 'Profile', path: 'profile'}]
+  const [modNav, setModNav] = useState(s.headerNav)
 
-  const pages = [{name:'Home', path:'home'}, {name:'Profile', path:'profile'}]
 
   return (
     <header className={s.container}>
@@ -16,9 +19,16 @@ export const Header = () => {
             <p>uls</p>
           </div>
         </div>
-        <nav className={s.nav}>
+
+        <MenuBurger setModNav={setModNav}/>
+
+        <nav className={`${s.nav} ${modNav}`}>
           <ul>
-            {pages.map(el => <li key={el.path} className={s.li}><NavLink to={el.path} className={({isActive})=> isActive ? s.active : ''}>{el.name}</NavLink></li>)}
+            {pages.map(el => <li key={el.path} className={s.li}>
+              <NavLink to={el.path} className={({isActive}) => isActive ? s.active : ''}>
+                {el.name}
+              </NavLink>
+            </li>)}
           </ul>
         </nav>
       </section>
