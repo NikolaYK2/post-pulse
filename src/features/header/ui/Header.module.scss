@@ -139,5 +139,15 @@
         }
       }
     }
+
+    .activeNav {
+      @media (max-width: 767px) {
+
+        display: flex;
+        transform: translateY(0%);
+        background: red;
+        transition: all 1s ease 0s;
+      }
+    }
   }
 }

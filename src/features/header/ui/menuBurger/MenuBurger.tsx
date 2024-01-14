@@ -2,13 +2,13 @@ import {useEffect, useState} from "react";
 import s from './MenuBurger.module.scss'
 
 type Props = {
+  switchNav:boolean,
   modNav:string,
-  setModNav: (style: string) => void
+  setModNav: (style: string) => void,
+  setSwitchNav:(value:boolean)=>void
 }
-export const MenuBurger = ({setModNav, modNav}: Props) => {
+export const MenuBurger = ({setModNav, modNav, switchNav,setSwitchNav}: Props) => {
   const [modBurger, setModBurger] = useState("")
-
-  const [switchNav, setSwitchNav] = useState(true)
 
   const burgerHandle = () => {
     setSwitchNav(!switchNav)

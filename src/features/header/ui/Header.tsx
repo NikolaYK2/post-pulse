@@ -8,8 +8,11 @@ export const Header = () => {
   const pages = [{name: 'Home', path: 'home'}, {name: 'Profile', path: 'profile'}]
 
   const [modNav, setModNav] = useState('')
+  const [switchNav, setSwitchNav] = useState(true)
 
-
+  const switchNavHandle = () => {
+    setSwitchNav(true)
+  }
 
   return (
     <header className={s.container}>
@@ -22,12 +25,15 @@ export const Header = () => {
           </div>
         </div>
 
-        <MenuBurger setModNav={setModNav} modNav={modNav}/>
+        <MenuBurger setModNav={setModNav} modNav={modNav} switchNav={switchNav} setSwitchNav={setSwitchNav}/>
 
         <nav className={`${s.nav} ${modNav}`}>
           <ul>
             {pages.map(el => <li key={el.path} className={s.li}>
-              <NavLink to={el.path} className={({isActive}) => isActive ? s.active : ''}>
+              <NavLink to={el.path}
+                       className={({isActive}) => isActive ? s.active : ''}
+                       onClick={switchNavHandle}
+              >
                 {el.name}
               </NavLink>
             </li>)}
