@@ -3,6 +3,7 @@ import {IconSvg} from "@/common/components/ui/iconSvg/IconSvg.tsx";
 import {NavLink} from "react-router-dom";
 import {useState} from "react";
 import {MenuBurger} from "@/features/header/ui/menuBurger/MenuBurger.tsx";
+import {SearchBar} from "@/features/header/ui/find/SearchBar.tsx";
 
 export const Header = () => {
   const pages = [{name: 'Home', path: 'home'}, {name: 'Profile', path: 'profile'}]
@@ -24,6 +25,8 @@ export const Header = () => {
             <p>uls</p>
           </div>
         </div>
+
+        <SearchBar/>
 
         <MenuBurger setModNav={setModNav} modNav={modNav} switchNav={switchNav} setSwitchNav={setSwitchNav}/>
 
