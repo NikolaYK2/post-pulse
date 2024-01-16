@@ -42,19 +42,19 @@
           cursor: text;
           transition:
                   box-shadow .3s ease-in-out 0s,
-                  transform .3s ease 1s, width .3s ease 1s;
+                  transform .3s ease .3s,
+                  width .3s ease 1s;
         }
 
         &:focus + .image {
           transform: translateY(290%);
           visibility: hidden;
-          transition: transform .3s ease 1s,
-          scale .3s ease 0s,
-          opacity .3s ease-in-out 1s,
+          transition: transform .3s ease .3s,
           visibility 0s ease 1s;
         }
       }
     }
+
 
 
     .image {
@@ -66,6 +66,10 @@
       height: 30px;
       transform: translateY(0);
       transition: transform .3s ease .3s, visibility 0s ease .1s;
+
+      &:hover{
+        fill: var(--color-medium-500);
+      }
     }
 
   }
@@ -77,6 +81,9 @@
     }
     .input + .image{
       transform: translateY(50px);
+      &:hover{
+        animation: none;
+      }
     }
   }
 }

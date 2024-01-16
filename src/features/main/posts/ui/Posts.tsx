@@ -5,6 +5,7 @@ import s from './Posts.module.scss'
 import {EmptyState} from "@/common/components/ui/emptyState/EmptyState.tsx";
 import {SortNav} from "@/features/main/posts/ui/sortNav/SortNav.tsx";
 import {useEffect, useState} from "react";
+import {PostsType} from "@/app/postRpovider/PostProvider.tsx";
 
 
 type Props = {
@@ -12,8 +13,8 @@ type Props = {
 }
 export const Posts = ({title}: Props) => {
 
-  const {posts} = usePosts()
-  const [allPosts, setAllPosts] = useState(posts)
+  const {posts, sortedPosts, search} = usePosts()
+  const [allPosts, setAllPosts] = useState<PostsType[]>([])
   const getPost = (index: number) => {
     if (index > posts.length) {
       return null
@@ -26,8 +27,8 @@ export const Posts = ({title}: Props) => {
   const post3 = getPost(3);
 
   useEffect(() => {
-    setAllPosts(posts);
-  }, [posts]);
+    setAllPosts(sortedPosts(posts));
+  }, [posts, search, sortedPosts]);
 
   return (
     <section className={`${s.container}`}>
@@ -54,8 +55,12 @@ export const Posts = ({title}: Props) => {
 
           {posts.length !== 0
             ? <div className={s.posts}>
-              {allPosts.map(post => <Post key={post.id} id={post.id} title={post.title} data={post.data}
-                                          background={post.background} className={s.post}/>)}
+              {sortedPosts(allPosts).map(post => <Post key={post.id}
+                                                       id={post.id}
+                                                       title={post.title}
+                                                       data={post.data}
+                                                       background={post.background}
+                                                       className={s.post}/>)}
             </div>
 
             : <EmptyState title={'No Posts'}/>

@@ -8,7 +8,7 @@ import {SearchBar} from "@/features/header/ui/find/SearchBar.tsx";
 export const Header = () => {
   const pages = [{name: 'Home', path: 'home'}, {name: 'Profile', path: 'profile'}]
 
-  const [modNav, setModNav] = useState('')
+  const [modStyleNav, setModStyleNav] = useState('')
   const [switchNav, setSwitchNav] = useState(true)
 
   const switchNavHandle = () => {
@@ -28,9 +28,9 @@ export const Header = () => {
 
         <SearchBar/>
 
-        <MenuBurger setModNav={setModNav} modNav={modNav} switchNav={switchNav} setSwitchNav={setSwitchNav}/>
+        <MenuBurger setModNav={setModStyleNav} modNav={modStyleNav} switchNav={switchNav} setSwitchNav={setSwitchNav}/>
 
-        <nav className={`${s.nav} ${modNav}`}>
+        <nav className={`${s.nav} ${modStyleNav}`}>
           <ul>
             {pages.map(el => <li key={el.path} className={s.li}>
               <NavLink to={el.path}

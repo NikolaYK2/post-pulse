@@ -4,8 +4,13 @@ import hearth from "@/assets/posts/post/bcHearts.jpg";
 import racing from "@/assets/posts/post/bcPost.jpg";
 
 export const PostContext = createContext<PostContextType>({
-  posts: [], setPosts: () => {
-  }
+  posts: [],
+  search: '',
+  setPosts: () => {
+  },
+  setSearch: () => {
+  },
+  sortedPosts: () => [],
 });
 
 export type PostsType = {
@@ -17,7 +22,10 @@ export type PostsType = {
 }
 type PostContextType = {
   posts: PostsType[];
+  search: string;
   setPosts: Dispatch<SetStateAction<PostsType[]>>;
+  setSearch: Dispatch<SetStateAction<string>>;
+  sortedPosts: (posts:PostsType[]) => PostsType[];
 }
 
 type Props = {
@@ -50,8 +58,14 @@ export const PostProvider = ({children}: Props) => {
     {id: '4', title: 'Top 7 Best Car Racing Games for PC', description: '', data: '01/01/23', background: racing},
   ]);
 
+  const [search, setSearch] = useState('')
+
+  const sortedPosts = (allPosts: PostsType[]) => {
+    return allPosts.filter(post => post.title.includes(search))
+  }
+
   return (
-    <PostContext.Provider value={{posts, setPosts}}>
+    <PostContext.Provider value={{posts, setPosts, search, setSearch, sortedPosts}}>
       {children}
     </PostContext.Provider>
   );

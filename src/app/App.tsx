@@ -1,13 +1,14 @@
 import {Main} from "@/features/main/Main.tsx";
 import {Header} from "@/features/header/ui/Header.tsx";
+import {PostProvider} from "@/app/postRpovider/PostProvider.tsx";
 
 function App() {
 
   return (
-    <div>
-      <Header/>
-      <Main/>
-    </div>
+      <PostProvider>
+        <Header/>
+        <Main/>
+      </PostProvider>
   )
 }
 
