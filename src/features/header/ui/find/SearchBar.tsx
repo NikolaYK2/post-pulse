@@ -1,22 +1,33 @@
 import {IconSvg} from "@/common/components/ui/iconSvg/IconSvg.tsx";
 import s from './SearchBar.module.scss'
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import {usePosts} from "@/app/postRpovider/usePosts.tsx";
-import {debounce} from "@/common/utils/throttle.ts";
+
 
 export const SearchBar = () => {
   const {setSearch} = usePosts();
-
-  const [inputValue, setInputValue] = useState('');
-
-  const debounceSearch = debounce(setSearch, 300)
+  const [inputValue, setInputValue] = useState(''); // состояние для ввода поиска
+  const [debouncedValue, setDebouncedValue] = useState(''); // состояние для отложенного поиска
 
   const searchHandle = (e: ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.currentTarget.value.toLowerCase()
-    setInputValue(newValue);
-    debounceSearch(inputValue)
+    setInputValue(e.currentTarget.value.toLowerCase()); // обновляем inputValue при каждом изменении
   };
 
+  // Обновляем debouncedValue с задержкой при каждом изменении inputValue
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(inputValue);
+    }, 700); // Задержка в 1000 миллисекунд
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [inputValue]);
+
+  // Обновляем search при каждом изменении debouncedValue
+  useEffect(() => {
+    setSearch(debouncedValue);
+  }, [debouncedValue, setSearch]);
 
   return (
     <div className={s.container}>
@@ -37,5 +48,9 @@ export const SearchBar = () => {
     </div>
   );
 };
+
+
+
+
 
 
