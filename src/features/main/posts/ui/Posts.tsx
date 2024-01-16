@@ -53,7 +53,7 @@ export const Posts = ({title}: Props) => {
 
           </div>
 
-          {posts.length !== 0
+          {sortedPosts(allPosts).length !== 0
             ? <div className={s.posts}>
               {sortedPosts(allPosts).map(post => <Post key={post.id}
                                                        id={post.id}

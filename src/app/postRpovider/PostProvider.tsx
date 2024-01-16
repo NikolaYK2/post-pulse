@@ -25,7 +25,7 @@ type PostContextType = {
   search: string;
   setPosts: Dispatch<SetStateAction<PostsType[]>>;
   setSearch: Dispatch<SetStateAction<string>>;
-  sortedPosts: (posts:PostsType[]) => PostsType[];
+  sortedPosts: (posts: PostsType[]) => PostsType[];
 }
 
 type Props = {
@@ -61,7 +61,7 @@ export const PostProvider = ({children}: Props) => {
   const [search, setSearch] = useState('')
 
   const sortedPosts = (allPosts: PostsType[]) => {
-    return allPosts.filter(post => post.title.includes(search))
+    return allPosts.filter(post => post.title.toLowerCase().includes(search))
   }
 
   return (

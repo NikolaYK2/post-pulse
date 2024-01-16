@@ -9,7 +9,7 @@ export const SearchBar = () => {
   const {setSearch, search} = usePosts()
 
   const searchHandle = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.currentTarget.value)
+    setSearch(e.currentTarget.value.toLowerCase())
   }
 
   return (
