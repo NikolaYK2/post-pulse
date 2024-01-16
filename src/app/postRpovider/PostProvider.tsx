@@ -6,10 +6,8 @@ import racing from "@/assets/posts/post/bcPost.jpg";
 export const PostContext = createContext<PostContextType>({
   posts: [],
   search: '',
-  setPosts: () => {
-  },
-  setSearch: () => {
-  },
+  setPosts: () => {},
+  setSearch: () => {},
   sortedPosts: () => [],
 });
 
@@ -58,14 +56,14 @@ export const PostProvider = ({children}: Props) => {
     {id: '4', title: 'Top 7 Best Car Racing Games for PC', description: '', data: '01/01/23', background: racing},
   ]);
 
-  const [search, setSearch] = useState('')
-
   const sortedPosts = (allPosts: PostsType[]) => {
     return allPosts.filter(post => post.title.toLowerCase().includes(search))
   }
 
+  const [search, setSearch] = useState('');
+
   return (
-    <PostContext.Provider value={{posts, setPosts, search, setSearch, sortedPosts}}>
+    <PostContext.Provider value={{posts, setPosts, search, setSearch, sortedPosts,}}>
       {children}
     </PostContext.Provider>
   );
