@@ -4,5 +4,25 @@
     width: 100%;
     margin: 0 auto;
   }
+  //posts =================================
+  //.remove-btn {
+  //  margin-right: 0.5rem;
+  //}
+  .app-enter {
+    opacity: 0;
 
+  }
+  .app-enter-active {
+    transform: scale(1);
+    opacity: 1;
+    transition: all 300ms ease-in;
+  }
+  .app-exit {
+    opacity: 1;
+  }
+  .app-exit-active {
+    transform: scale(0);
+    opacity: 0;
+    transition: all 300ms ease-in;
+  }
 }

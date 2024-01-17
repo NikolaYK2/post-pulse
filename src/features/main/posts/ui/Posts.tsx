@@ -1,12 +1,12 @@
 import {Post} from "@/features/main/posts/ui/post/Post.tsx";
 import {H2} from "@/common/components/ui/h2/H2.tsx";
 import {usePosts} from "@/app/postRpovider/usePosts.tsx";
-import s from './Posts.module.scss'
 import {EmptyState} from "@/common/components/ui/emptyState/EmptyState.tsx";
 import {SortNav} from "@/features/main/posts/ui/sortNav/SortNav.tsx";
 import {useEffect, useState} from "react";
 import {PostsType} from "@/app/postRpovider/PostProvider.tsx";
-
+import {CSSTransition, TransitionGroup} from 'react-transition-group';
+import s from './Posts.module.scss'
 
 type Props = {
   title: string
@@ -15,6 +15,7 @@ export const Posts = ({title}: Props) => {
 
   const {posts, sortedPosts, search} = usePosts()
   const [allPosts, setAllPosts] = useState<PostsType[]>([])
+
   const getPost = (index: number) => {
     if (index > posts.length) {
       return null
@@ -54,14 +55,18 @@ export const Posts = ({title}: Props) => {
           </div>
 
           {sortedPosts(allPosts).length !== 0
-            ? <div className={s.posts}>
-              {sortedPosts(allPosts).map(post => <Post key={post.id}
-                                                       id={post.id}
-                                                       title={post.title}
-                                                       data={post.data}
-                                                       background={post.background}
-                                                       className={s.post}/>)}
-            </div>
+            ? <TransitionGroup className={s.posts}>
+              {sortedPosts(allPosts).map(post => <CSSTransition key={post.id}
+                                                                timeout={500}
+                                                                classNames='app'>
+                  <Post id={post.id}
+                        title={post.title}
+                        data={post.data}
+                        background={post.background}
+                        className={s.post}/>
+                </CSSTransition>
+              )}
+            </TransitionGroup>
 
             : <EmptyState title={'No Posts'}/>
           }
