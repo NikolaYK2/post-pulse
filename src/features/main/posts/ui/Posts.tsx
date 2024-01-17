@@ -7,13 +7,14 @@ import {useEffect, useState} from "react";
 import {PostsType} from "@/app/postRpovider/PostProvider.tsx";
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import s from './Posts.module.scss'
+import {postsApi} from "@/features/main/posts/api/postsApi.ts";
 
 type Props = {
   title: string
 }
 export const Posts = ({title}: Props) => {
 
-  const {posts, sortedPosts, search} = usePosts()
+  const {posts, sortedPosts, search, setPosts} = usePosts()
   const [allPosts, setAllPosts] = useState<PostsType[]>([])
 
   const getPost = (index: number) => {
@@ -31,14 +32,19 @@ export const Posts = ({title}: Props) => {
     setAllPosts(sortedPosts(posts));
   }, [posts, search, sortedPosts]);
 
+  console.log(posts)
+  const sld = async ()=>{
+    const res = await postsApi.getPosts()
+    setPosts(res.data)
+  }
   return (
     <section className={`${s.container}`}>
       <div className={`${s.blockNewPosts}`}>
         <div className={`${s.postOne} containerApp`}>
-          <Post id={post1?.id} title={post1?.title} data={post1?.data} background={post1?.background}/>
+          <Post id={post1?.userId} title={post1?.title} data={post1?.data} background={post1?.background}/>
           <div className={s.postTwo}>
-            <Post id={post2?.id} title={post2?.title} data={post2?.data} background={post2?.background}/>
-            <Post id={post3?.id} title={post3?.title} data={post3?.data} background={post3?.background}/>
+            <Post id={post2?.userId} title={post2?.title} data={post2?.data} background={post2?.background}/>
+            <Post id={post3?.userId} title={post3?.title} data={post3?.data} background={post3?.background}/>
           </div>
         </div>
       </div>
@@ -70,7 +76,7 @@ export const Posts = ({title}: Props) => {
 
             : <EmptyState title={'No Posts'}/>
           }
-
+          <button onClick={sld}>ADD</button>
         </div>
       </div>
     </section>

@@ -1,20 +1,21 @@
 import {createContext, Dispatch, ReactNode, SetStateAction, useState} from "react";
-import marvel from "@/assets/posts/post/bcMarvel.jpg";
-import hearth from "@/assets/posts/post/bcHearts.jpg";
-import racing from "@/assets/posts/post/bcPost.jpg";
 
 export const PostContext = createContext<PostContextType>({
   posts: [],
   search: '',
-  setPosts: () => {},
-  setSearch: () => {},
+  setPosts: () => {
+  },
+  setSearch: () => {
+  },
   sortedPosts: () => [],
 });
 
 export type PostsType = {
-  id: string,
+  [key: string]: number | string; // З
+  id: number,
+  userId: number,
   title: string,
-  description: string,
+  body: string,
   data: string,
   background: string,
 }
@@ -32,28 +33,38 @@ type Props = {
 export const PostProvider = ({children}: Props) => {
 
   const [posts, setPosts] = useState<PostsType[]>([
-    {
-      id: '1',
-      title: 'Jon Bernthal Joins Ghost Recon Fantacy The Wildlands',
-      description: '',
-      data: '10/12/23',
-      background: ''
-    },
-    {
-      id: '2',
-      title: 'Marvel vs Capcom: Infinite release date set for September',
-      description: '',
-      data: '10/11/23',
-      background: marvel
-    },
-    {
-      id: '3',
-      title: 'Hearth stone fan game imagines new classes, 300+',
-      description: '',
-      data: '09/01/23',
-      background: hearth
-    },
-    {id: '4', title: 'Top 7 Best Car Racing Games for PC', description: '', data: '01/01/23', background: racing},
+    // {
+    //   id: 11240,
+    //   userId: 1231114,
+    //   title: 'Jon Bernthal Joins Ghost Recon Fantacy The Wildlands',
+    //   body: '',
+    //   data: '10/12/23',
+    //   background: ''
+    // },
+    // {
+    //   id: 22353,
+    //   userId: 2324126,
+    //   title: 'Marvel vs Capcom: Infinite release date set for September',
+    //   body: '',
+    //   data: '10/11/23',
+    //   background: marvel
+    // },
+    // {
+    //   id: 31355,
+    //   userId: 32342342,
+    //   title: 'Hearth stone fan game imagines new classes, 300+',
+    //   body: '',
+    //   data: '09/01/23',
+    //   background: hearth
+    // },
+    // {
+    //   id: 41231,
+    //   userId: 423423423,
+    //   title: 'Top 7 Best Car Racing Games for PC',
+    //   body: '',
+    //   data: '01/01/23',
+    //   background: racing
+    // },
   ]);
 
   const sortedPosts = (allPosts: PostsType[]) => {

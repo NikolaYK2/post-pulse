@@ -5,10 +5,12 @@ import {ChangeEvent, Dispatch, SetStateAction, useState} from "react";
 
 
 type CommonFields = {
-  id: string;
-  title: string;
-  description: string;
-  data: string
+  id: number,
+  userId: number,
+  title: string,
+  body: string,
+  data?: string,
+  background?: string,
 };
 
 type Props<T extends CommonFields> = {
@@ -16,20 +18,20 @@ type Props<T extends CommonFields> = {
   setPosts: Dispatch<SetStateAction<T[]>>;
 }
 export const Form = <T extends CommonFields>({posts, setPosts}: Props<T>) => {
-  const [post, setPost] = useState({title: '', description: ''})
+  const [post, setPost] = useState({title: '', body: ''})
 
-  const uniqueId = `${Date.now()}-${Math.random()}`;
+  const uniqueId = Date.now() + Math.random();
 
   const addTitleHandle = (e: ChangeEvent<HTMLInputElement>) => {
     setPost({...post, title: e.currentTarget.value})
   }
   const addDescriptionHandle = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setPost({...post, description: e.currentTarget.value})
+    setPost({...post, body: e.currentTarget.value})
   }
 
   const addPostHandle = () => {
-    setPosts([...posts, {...post, id: uniqueId, data: Date + ''} as T])
-    setPost({title: '', description: ''})
+    setPosts([...posts, {...post, id: uniqueId,} as T])
+    setPost({title: '', body: ''})
   }
 
 
@@ -43,7 +45,7 @@ export const Form = <T extends CommonFields>({posts, setPosts}: Props<T>) => {
         </label>
         <label className={s.textarea}>
           <span>Post Description</span>
-          <textarea value={post.description} onChange={addDescriptionHandle}/>
+          <textarea value={post.body} onChange={addDescriptionHandle}/>
         </label>
         <BtnPoly variant={'primary'} onClick={addPostHandle}>Add Post</BtnPoly>
       </form>

@@ -4,7 +4,7 @@ import bcDefault from '@/assets/posts/bc/bcDefault.jpg'
 import {usePosts} from "@/app/postRpovider/usePosts.tsx";
 
 type Props = {
-  id?: string,
+  id?: number,
   title?: string,
   data?: string,
   background?: string,
@@ -14,7 +14,7 @@ export const Post = ({id, title, data, background, className}: Props) => {
 
   const {posts, setPosts} = usePosts()
 
-  const deletePostHandle = (id?: string) => {
+  const deletePostHandle = (id?: number) => {
     setPosts(posts.filter(post => post.id !== id))
   }
 
