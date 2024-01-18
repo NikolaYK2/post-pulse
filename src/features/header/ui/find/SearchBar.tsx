@@ -6,25 +6,23 @@ import {usePosts} from "@/app/postRpovider/usePosts.tsx";
 
 export const SearchBar = () => {
   const {setSearch} = usePosts();
-  const [inputValue, setInputValue] = useState(''); // состояние для ввода поиска
+  const [inputValue, setInputValue] = useState('');
   const [debouncedValue, setDebouncedValue] = useState(''); // состояние для отложенного поиска
 
   const searchHandle = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.currentTarget.value.toLowerCase()); // обновляем inputValue при каждом изменении
+    setInputValue(e.currentTarget.value.toLowerCase());
   };
 
-  // Обновляем debouncedValue с задержкой при каждом изменении inputValue
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedValue(inputValue);
-    }, 700); // Задержка в 1000 миллисекунд
+    }, 700);
 
     return () => {
       clearTimeout(handler);
     };
   }, [inputValue]);
 
-  // Обновляем search при каждом изменении debouncedValue
   useEffect(() => {
     setSearch(debouncedValue);
   }, [debouncedValue, setSearch]);
@@ -36,7 +34,7 @@ export const SearchBar = () => {
           <input
             className={`${s.input}`}
             type="search"
-            value={inputValue} // используем inputValue вместо search
+            value={inputValue}
             onChange={searchHandle}
             placeholder={'Search...'}
           />

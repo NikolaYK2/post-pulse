@@ -11,8 +11,7 @@ type Props = {
 export const SortNav = ({allPosts, setAllPosts}: Props) => {
   const [isSorted, setIsSorted] = useState(false)
 
-  const {posts} = usePosts()
-
+  const {posts, setSearch, search} = usePosts()
   const [sortArr, setSortArr] = useState([
     {name: 'default', isActive: true},
     {name: 'body', isActive: false},
@@ -21,10 +20,11 @@ export const SortNav = ({allPosts, setAllPosts}: Props) => {
 
   const sortHandle = (filter: string) => {
     if (filter !== 'default') {
-      setAllPosts([...allPosts].sort((a, b) => isSorted
+      setAllPosts([...allPosts.map(e => e)].sort((a, b) => isSorted
         ? String(a[filter]).localeCompare(String(b[filter]))
         : String(b[filter]).localeCompare(String(a[filter]))))
     } else {
+      if (search !== '') setSearch('')
       setAllPosts(posts)
     }
     setSortArr(sortArr.map(el => el.name === filter ? {...el, isActive: true} : {...el, isActive: false}))

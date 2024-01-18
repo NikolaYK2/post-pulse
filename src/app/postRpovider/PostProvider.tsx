@@ -31,6 +31,7 @@ type Props = {
   children: ReactNode
 }
 export const PostProvider = ({children}: Props) => {
+  const [search, setSearch] = useState('');
 
   const [posts, setPosts] = useState<PostsType[]>([
     // {
@@ -71,7 +72,6 @@ export const PostProvider = ({children}: Props) => {
     return allPosts.filter(post => post.title.toLowerCase().includes(search))
   }
 
-  const [search, setSearch] = useState('');
 
   return (
     <PostContext.Provider value={{posts, setPosts, search, setSearch, sortedPosts,}}>

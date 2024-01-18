@@ -1,5 +1,5 @@
 type Props = {
-  name: '' | 'logo' | 'dots' | 'wave' | 'find'
+  name: '' | 'logo' | 'dots' | 'wave' | 'find' | 'loading'
 }
 export const IconSvg = ({name}: Props) => {
   switch (name) {
@@ -137,6 +137,42 @@ export const IconSvg = ({name}: Props) => {
         <path
           d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z"/>
       </svg>
+    }
+    case "loading": {
+      return <svg
+                  width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+        <g>
+          <circle cx="60" cy="50" r="4" fill="#689cc5">
+            <animate attributeName="cx" repeatCount="indefinite" dur="1.075268817204301s" values="95;35" keyTimes="0;1"
+                     begin="-0.6231000000000001s"></animate>
+            <animate attributeName="fill-opacity" repeatCount="indefinite" dur="1.075268817204301s" values="0;1;1"
+                     keyTimes="0;0.2;1" begin="-0.6231000000000001s"></animate>
+          </circle>
+          <circle cx="60" cy="50" r="4" fill="#689cc5">
+            <animate attributeName="cx" repeatCount="indefinite" dur="1.075268817204301s" values="95;35" keyTimes="0;1"
+                     begin="-0.3069s"></animate>
+            <animate attributeName="fill-opacity" repeatCount="indefinite" dur="1.075268817204301s" values="0;1;1"
+                     keyTimes="0;0.2;1" begin="-0.3069s"></animate>
+          </circle>
+          <circle cx="60" cy="50" r="4" fill="#689cc5">
+            <animate attributeName="cx" repeatCount="indefinite" dur="1.075268817204301s" values="95;35" keyTimes="0;1"
+                     begin="0s"></animate>
+            <animate attributeName="fill-opacity" repeatCount="indefinite" dur="1.075268817204301s" values="0;1;1"
+                     keyTimes="0;0.2;1" begin="0s"></animate>
+          </circle>
+        </g>
+        <g transform="translate(-15 0)">
+          <path d="M50 50L20 50A30 30 0 0 0 80 50Z" fill="#93dbe9" transform="rotate(90 50 50)"></path>
+          <path d="M50 50L20 50A30 30 0 0 0 80 50Z" fill="#93dbe9">
+            <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.075268817204301s"
+                              values="0 50 50;45 50 50;0 50 50" keyTimes="0;0.5;1"></animateTransform>
+          </path>
+          <path d="M50 50L20 50A30 30 0 0 1 80 50Z" fill="#93dbe9">
+            <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.075268817204301s"
+                              values="0 50 50;-45 50 50;0 50 50" keyTimes="0;0.5;1"></animateTransform>
+          </path>
+        </g>
+        </svg>
     }
     default:
       return <svg></svg>

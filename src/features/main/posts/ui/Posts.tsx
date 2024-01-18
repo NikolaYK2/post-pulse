@@ -8,6 +8,7 @@ import {PostsType} from "@/app/postRpovider/PostProvider.tsx";
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import s from './Posts.module.scss'
 import {postsApi} from "@/features/main/posts/api/postsApi.ts";
+import {Loading} from "@/common/components/ui/loading/Loading.tsx";
 
 type Props = {
   title: string
@@ -16,7 +17,9 @@ export const Posts = ({title}: Props) => {
 
   const {posts, sortedPosts, search, setPosts} = usePosts()
   const [allPosts, setAllPosts] = useState<PostsType[]>([])
-
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  console.log(allPosts)
+  console.log(posts)
   const getPost = (index: number) => {
     if (index > posts.length) {
       return null
@@ -32,11 +35,23 @@ export const Posts = ({title}: Props) => {
     setAllPosts(sortedPosts(posts));
   }, [posts, search, sortedPosts]);
 
-  console.log(posts)
-  const sld = async ()=>{
-    const res = await postsApi.getPosts()
-    setPosts(res.data)
+  const sld = async () => {
+    setIsLoading(true)
+
+    try {
+      const res = await postsApi.getPosts()
+      setPosts(res.data)
+    } catch (e) {
+      console.error('posts not download', e)
+    } finally {
+      setIsLoading(false)
+    }
   }
+
+  useEffect(() => {
+    sld()
+  }, []);
+
   return (
     <section className={`${s.container}`}>
       <div className={`${s.blockNewPosts}`}>
@@ -60,23 +75,24 @@ export const Posts = ({title}: Props) => {
 
           </div>
 
-          {sortedPosts(allPosts).length !== 0
-            ? <TransitionGroup className={s.posts}>
-              {sortedPosts(allPosts).map(post => <CSSTransition key={post.id}
-                                                                timeout={500}
-                                                                classNames='app'>
-                  <Post id={post.id}
-                        title={post.title}
-                        data={post.data}
-                        background={post.background}
-                        className={s.post}/>
-                </CSSTransition>
-              )}
-            </TransitionGroup>
+          {isLoading ? <Loading/> :
+              <>{sortedPosts(allPosts).length !== 0
+                  ? <TransitionGroup className={s.posts}>
+                    {sortedPosts(allPosts).map(post => <CSSTransition key={post.id}
+                                                                      timeout={500}
+                                                                      classNames='app'>
+                        <Post id={post.id}
+                              title={post.title}
+                              data={post.data}
+                              background={post.background}
+                              className={s.post}/>
+                      </CSSTransition>
+                    )}
+                  </TransitionGroup>
 
-            : <EmptyState title={'No Posts'}/>
+                  : <EmptyState title={'No Posts'}/>
+                }</>
           }
-          <button onClick={sld}>ADD</button>
         </div>
       </div>
     </section>
