@@ -1,37 +1,39 @@
 import {createContext, Dispatch, ReactNode, SetStateAction, useState} from "react";
+import {GetPostsType, postsApi} from "@/features/main/posts/api/postsApi.ts";
 
-export const PostContext = createContext<PostContextType>({
-  posts: [],
-  search: '',
-  setPosts: () => {
-  },
-  setSearch: () => {
-  },
-  sortedPosts: () => [],
-});
 
-export type PostsType = {
-  [key: string]: number | string; // З
-  id: number,
-  userId: number,
-  title: string,
-  body: string,
-  data: string,
-  background: string,
+
+export type PostsType = GetPostsType &{
+  [key: string]: number | string | undefined; // З
+  data?: string,
+  background?: string,
 }
 type PostContextType = {
   posts: PostsType[];
   search: string;
+  isLoading: boolean;
   setPosts: Dispatch<SetStateAction<PostsType[]>>;
   setSearch: Dispatch<SetStateAction<string>>;
   sortedPosts: (posts: PostsType[]) => PostsType[];
+  fetchPosts: ()=> Promise<void>,
 }
+
+export const PostContext = createContext<PostContextType>({
+  posts: [],
+  search: '',
+  isLoading: false,
+  setPosts: () => {},
+  setSearch: () => {},
+  sortedPosts: () => [],
+  fetchPosts:()=> Promise<void>
+});
 
 type Props = {
   children: ReactNode
 }
 export const PostProvider = ({children}: Props) => {
   const [search, setSearch] = useState('');
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const [posts, setPosts] = useState<PostsType[]>([
     // {
@@ -72,9 +74,28 @@ export const PostProvider = ({children}: Props) => {
     return allPosts.filter(post => post.title.toLowerCase().includes(search))
   }
 
+  const fetchPosts = async () => {
+    setIsLoading(true)
+    try {
+      const res = await postsApi.getPosts()
+      setPosts(res.data)
+    } catch (e) {
+      console.error('posts not download', e)
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   return (
-    <PostContext.Provider value={{posts, setPosts, search, setSearch, sortedPosts,}}>
+    <PostContext.Provider value={{
+      posts,
+      search,
+      isLoading,
+      setPosts,
+      setSearch,
+      sortedPosts,
+      fetchPosts
+    }}>
       {children}
     </PostContext.Provider>
   );
