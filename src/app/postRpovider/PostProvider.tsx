@@ -1,31 +1,35 @@
 import {createContext, Dispatch, ReactNode, SetStateAction, useState} from "react";
 import {GetPostsType, postsApi} from "@/features/main/posts/api/postsApi.ts";
+import {useFetching} from "@/common/hooks/useFetching.ts";
 
 
-
-export type PostsType = GetPostsType &{
+export type PostsType = GetPostsType & {
   [key: string]: number | string | undefined; // З
   data?: string,
   background?: string,
 }
 type PostContextType = {
   posts: PostsType[];
+  postError: string,
   search: string;
   isLoading: boolean;
   setPosts: Dispatch<SetStateAction<PostsType[]>>;
   setSearch: Dispatch<SetStateAction<string>>;
   sortedPosts: (posts: PostsType[]) => PostsType[];
-  fetchPosts: ()=> Promise<void>,
+  fetchPosts: () => Promise<void>,
 }
 
 export const PostContext = createContext<PostContextType>({
   posts: [],
+  postError: '',
   search: '',
   isLoading: false,
-  setPosts: () => {},
-  setSearch: () => {},
+  setPosts: () => {
+  },
+  setSearch: () => {
+  },
   sortedPosts: () => [],
-  fetchPosts:()=> Promise<void>
+  fetchPosts: () => Promise.resolve()
 });
 
 type Props = {
@@ -33,7 +37,11 @@ type Props = {
 }
 export const PostProvider = ({children}: Props) => {
   const [search, setSearch] = useState('');
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+
+  const {isLoading, postError, fetchPosts} = useFetching(async () => {
+    const res = await postsApi.getPosts()
+    setPosts(res.data)
+  });
 
   const [posts, setPosts] = useState<PostsType[]>([
     // {
@@ -74,21 +82,11 @@ export const PostProvider = ({children}: Props) => {
     return allPosts.filter(post => post.title.toLowerCase().includes(search))
   }
 
-  const fetchPosts = async () => {
-    setIsLoading(true)
-    try {
-      const res = await postsApi.getPosts()
-      setPosts(res.data)
-    } catch (e) {
-      console.error('posts not download', e)
-    } finally {
-      setIsLoading(false)
-    }
-  }
 
   return (
     <PostContext.Provider value={{
       posts,
+      postError,
       search,
       isLoading,
       setPosts,

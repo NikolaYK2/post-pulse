@@ -6,15 +6,15 @@ import {SortNav} from "@/features/main/posts/ui/sortNav/SortNav.tsx";
 import {useEffect, useState} from "react";
 import {PostsType} from "@/app/postRpovider/PostProvider.tsx";
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
-import s from './Posts.module.scss'
 import {Loading} from "@/common/components/ui/loading/Loading.tsx";
+import s from './Posts.module.scss'
 
 type Props = {
   title: string
 }
 export const Posts = ({title}: Props) => {
 
-  const {posts, sortedPosts, search, fetchPosts, isLoading} = usePosts()
+  const {posts, postError, isLoading, search, sortedPosts, fetchPosts} = usePosts()
   const [allPosts, setAllPosts] = useState<PostsType[]>([])
 
   const getPost = (index: number) => {
@@ -34,7 +34,7 @@ export const Posts = ({title}: Props) => {
 
 
   useEffect(() => {
-    fetchPosts()
+    fetchPosts().catch(e => console.error(e))
   }, []);
 
   return (
@@ -60,6 +60,8 @@ export const Posts = ({title}: Props) => {
 
           </div>
 
+
+          {postError && <h1>Errors!!!! {postError}</h1>}
           {isLoading ? <Loading/> :
             <>{sortedPosts(allPosts).length !== 0
               ? <TransitionGroup className={s.posts}>
