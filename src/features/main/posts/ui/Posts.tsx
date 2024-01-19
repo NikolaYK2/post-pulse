@@ -8,6 +8,7 @@ import {PostsType} from "@/app/postRpovider/PostProvider.tsx";
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import {Loading} from "@/common/components/ui/loading/Loading.tsx";
 import s from './Posts.module.scss'
+import {Paginator} from "@/common/components/ui/paginator/Paginator.tsx";
 
 type Props = {
   title: string
@@ -53,11 +54,7 @@ export const Posts = ({title}: Props) => {
         <div className={s.item}>
           <div className={s.title}>
             <H2 title={title} side={"right"}/>
-
-            <div className={s.decoration}>
-              <SortNav allPosts={allPosts} setAllPosts={setAllPosts}/>
-            </div>
-
+            <SortNav allPosts={allPosts} setAllPosts={setAllPosts}/>
           </div>
 
 
@@ -81,6 +78,12 @@ export const Posts = ({title}: Props) => {
             }</>
           }
         </div>
+
+        <div style={{display:'flex'}}>
+          <H2/>
+          <Paginator totalCount={100} limit={10} page={1}/>
+        </div>
+
       </div>
     </section>
   );

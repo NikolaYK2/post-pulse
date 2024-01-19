@@ -37,11 +37,7 @@ type Props = {
 }
 export const PostProvider = ({children}: Props) => {
   const [search, setSearch] = useState('');
-
-  const {isLoading, postError, fetchPosts} = useFetching(async () => {
-    const res = await postsApi.getPosts()
-    setPosts(res.data)
-  });
+  const [totalCount, setTotalCount] = useState({_limit:9, _page:1});
 
   const [posts, setPosts] = useState<PostsType[]>([
     // {
@@ -82,6 +78,10 @@ export const PostProvider = ({children}: Props) => {
     return allPosts.filter(post => post.title.toLowerCase().includes(search))
   }
 
+  const {isLoading, postError, fetchPosts} = useFetching(async () => {
+    const res = await postsApi.getPosts(totalCount)
+    setPosts(res.data)
+  });
 
   return (
     <PostContext.Provider value={{

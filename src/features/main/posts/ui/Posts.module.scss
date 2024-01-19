@@ -35,6 +35,7 @@
 
   .blockAllPosts {
     display: flex;
+    flex-direction: column;
     justify-content: start;
     font-size: var(--f-s-big);
 
@@ -45,10 +46,7 @@
       .title {
         display: flex;
         align-items: center;
-
-        > h2 {
-          display: inline-flex;
-        }
+  flex-wrap: wrap;
 
         .decoration {
           display: flex;

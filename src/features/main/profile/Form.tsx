@@ -37,7 +37,7 @@ export const Form = <T extends CommonFields>({posts, setPosts}: Props<T>) => {
 
   return (
     <div className={s.container} onSubmit={event => event.preventDefault()}>
-      <H2 title={'Provide reliable news'} side={'left'}/>
+      <H2 title={'Provide reliable news'} side={'left'} decoration={false}/>
       <form className={s.form}>
         <label className={s.input}>
           <span>Post title</span>
