@@ -42,16 +42,13 @@ export const Paginator = ({pagination, setPagination}: PaginatorTypeComponent) =
             </>}
       </div>
 
-      {filterPages.map((p) => {
-        return (
-          <span key={p}
-                className={page === p ? s.pageActive : s.page}
-                onClick={() => setPagination({...pagination, page: p})}
-          >
+      {filterPages.map((p) => <span
+        key={p}
+        className={page === p ? s.pageActive : s.page}
+        onClick={() => setPagination({...pagination, page: p})}>
             {p}
           </span>
-        );
-      })}
+      )}
 
       {portionCount > portionPage &&
           <div className={s.paginatorBut}>
