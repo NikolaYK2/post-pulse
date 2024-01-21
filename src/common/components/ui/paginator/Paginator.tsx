@@ -1,15 +1,16 @@
-import {useMemo, useState} from "react";
+import {Dispatch, SetStateAction, useMemo, useState} from "react";
 import s from './Paginator.module.scss'
+import {PaginatorType} from "@/app/postRpovider/PostProvider.tsx";
 
 type PaginatorTypeComponent = {
-  totalCount: number,
-  limit: number,
-  page: number,
+  pagination: PaginatorType,
+  setPagination: Dispatch<SetStateAction<PaginatorType>>
 }
 
-export const Paginator = ({totalCount, limit, page}: PaginatorTypeComponent) => {
+export const Paginator = ({pagination, setPagination}: PaginatorTypeComponent) => {
   //общее количество страниц при показе props.pageSize на странице
-  let pagesCount = Math.ceil(totalCount / limit);
+  const {totalCount, page, limit} = pagination
+  const pagesCount = Math.ceil(totalCount / limit);
 
   const pages = useMemo(() => {
     let pagesArray: number[] = [];
@@ -20,12 +21,12 @@ export const Paginator = ({totalCount, limit, page}: PaginatorTypeComponent) => 
   }, [pagesCount])
 
   // Вычисление общего количества "порций" страниц
-  let portionCount = Math.ceil(pagesCount / limit)
+  const portionCount = Math.ceil(pagesCount / limit)
   // Использование useState для отслеживания текущей "порции" страниц
   const [portionPage, setPortionPage] = useState(Math.ceil(page / limit))
   // Вычисление границ текущей "порции" страниц
-  let prevPortionNumber = (portionPage - 1) * limit + 1
-  let nextPortionNumber = portionPage * limit
+  const prevPortionNumber = (portionPage - 1) * limit + 1
+  const nextPortionNumber = portionPage * limit
 // Фильтрация массива страниц для отображения только текущей "порции" страниц
   const filterPages = useMemo(() => {
     return pages.filter(p => p >= prevPortionNumber && p <= nextPortionNumber)
@@ -45,9 +46,10 @@ export const Paginator = ({totalCount, limit, page}: PaginatorTypeComponent) => 
         return (
           <span key={p}
                 className={page === p ? s.pageActive : s.page}
-                onClick={() => {
-                }}
-          >{p}</span>
+                onClick={() => setPagination({...pagination, page: p})}
+          >
+            {p}
+          </span>
         );
       })}
 

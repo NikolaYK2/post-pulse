@@ -15,7 +15,7 @@ type Props = {
 }
 export const Posts = ({title}: Props) => {
 
-  const {posts, postError, isLoading, search, sortedPosts, fetchPosts} = usePosts()
+  const {posts, postError, isLoading, search, sortedPosts, fetchPosts, setPagination, pagination} = usePosts()
   const [allPosts, setAllPosts] = useState<PostsType[]>([])
 
   const getPost = (index: number) => {
@@ -36,7 +36,7 @@ export const Posts = ({title}: Props) => {
 
   useEffect(() => {
     fetchPosts().catch(e => console.error(e))
-  }, []);
+  }, [pagination.page]);
 
   return (
     <section className={`${s.container}`}>
@@ -79,9 +79,12 @@ export const Posts = ({title}: Props) => {
           }
         </div>
 
-        <div style={{display:'flex'}}>
+        <div style={{display: 'flex'}}>
           <H2/>
-          <Paginator totalCount={100} limit={10} page={1}/>
+          <Paginator
+            pagination={pagination}
+            setPagination={setPagination}
+          />
         </div>
 
       </div>

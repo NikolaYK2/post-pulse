@@ -2,7 +2,11 @@ import {createContext, Dispatch, ReactNode, SetStateAction, useState} from "reac
 import {GetPostsType, postsApi} from "@/features/main/posts/api/postsApi.ts";
 import {useFetching} from "@/common/hooks/useFetching.ts";
 
-
+export type PaginatorType = {
+  limit: number,
+  page: number,
+  totalCount: number
+}
 export type PostsType = GetPostsType & {
   [key: string]: number | string | undefined; // З
   data?: string,
@@ -10,26 +14,32 @@ export type PostsType = GetPostsType & {
 }
 type PostContextType = {
   posts: PostsType[];
-  postError: string,
+  pagination: PaginatorType;
+  postError: string;
   search: string;
   isLoading: boolean;
   setPosts: Dispatch<SetStateAction<PostsType[]>>;
+  setPagination: Dispatch<SetStateAction<PaginatorType>>;
   setSearch: Dispatch<SetStateAction<string>>;
   sortedPosts: (posts: PostsType[]) => PostsType[];
-  fetchPosts: () => Promise<void>,
+  fetchPosts: () => Promise<void>;
 }
 
 export const PostContext = createContext<PostContextType>({
   posts: [],
+  pagination: {
+    totalCount: 0,
+    page: 0,
+    limit: 0
+  },
   postError: '',
   search: '',
   isLoading: false,
-  setPosts: () => {
-  },
-  setSearch: () => {
-  },
+  setPosts: () => {},
+  setPagination: () => {},
+  setSearch: () => {},
   sortedPosts: () => [],
-  fetchPosts: () => Promise.resolve()
+  fetchPosts: () => Promise.resolve(),
 });
 
 type Props = {
@@ -37,8 +47,7 @@ type Props = {
 }
 export const PostProvider = ({children}: Props) => {
   const [search, setSearch] = useState('');
-  const [totalCount, setTotalCount] = useState({_limit:9, _page:1});
-
+  const [pagination, setPagination] = useState<PaginatorType>({limit: 9, page: 1, totalCount: 0});
   const [posts, setPosts] = useState<PostsType[]>([
     // {
     //   id: 11240,
@@ -78,9 +87,11 @@ export const PostProvider = ({children}: Props) => {
     return allPosts.filter(post => post.title.toLowerCase().includes(search))
   }
 
+
   const {isLoading, postError, fetchPosts} = useFetching(async () => {
-    const res = await postsApi.getPosts(totalCount)
-    setPosts(res.data)
+    const res = await postsApi.getPosts(pagination)
+    setPosts(res.data);
+    setPagination({...pagination, totalCount: res.headers['x-total-count']})
   });
 
   return (
@@ -89,10 +100,12 @@ export const PostProvider = ({children}: Props) => {
       postError,
       search,
       isLoading,
+      pagination,
       setPosts,
       setSearch,
       sortedPosts,
-      fetchPosts
+      fetchPosts,
+      setPagination,
     }}>
       {children}
     </PostContext.Provider>

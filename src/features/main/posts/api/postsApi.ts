@@ -8,12 +8,20 @@ export type GetPostsType = {
 }
 
 export const postsApi = {
-  getPosts: ({_limit = 10, _page = 1}) => {
+  getPosts: ({limit = 9, page = 1}) => {
     return instance.get<GetPostsType[]>('posts', {
-      params:{
-        _limit,
-        _page
+      params: {
+        _limit: limit,
+        _page: page
       }
     })
   }
+  // getPosts: ({limit = 9, page = 1}) => {
+  //   return instance.get<GetPostsType[]>('posts', {
+  //     params: {
+  //       _limit: limit,
+  //       _page: page
+  //     }
+  //   })
+  // }
 };

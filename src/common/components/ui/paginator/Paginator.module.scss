@@ -1,8 +1,30 @@
-.container{
+.container {
   display: flex;
-  justify-content: end{
-  }
-  .page{
+  align-items: center;
+  justify-content: end;
+  flex: 0 1 auto;
+  font-family: var(--f-roboto);
+  font-weight: 400;
+
+  .page {
     cursor: pointer;
+    margin: 0 5px;
+  }
+
+  .paginatorBut {
+    display: flex;
+  }
+
+  .paginatorBut button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color);
+
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 30px;
+    margin: 2px
   }
 }
