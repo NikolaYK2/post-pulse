@@ -39,7 +39,7 @@ export const SearchBar = () => {
             placeholder={'Search...'}
           />
           <div className={s.image}>
-            <IconSvg name={'find'}/>
+            <IconSvg name={'search'}/>
           </div>
         </label>
       </div>

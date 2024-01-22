@@ -1,8 +1,9 @@
-import s from './Post.module.scss'
 import {BtnPoly} from "@/common/components/ui/btnPoly/BtnPoly.tsx";
-import bcDefault from '@/assets/posts/bc/bcDefault.jpg'
 import {usePosts} from "@/app/postRpovider/usePosts.tsx";
 import {NavLink} from "react-router-dom";
+import {formattedTitle} from "@/common/utils/formattedTitle.ts";
+import bcDefault from '@/assets/posts/bc/bcDefault.jpg'
+import s from './Post.module.scss'
 
 type Props = {
   id?: number,
@@ -19,7 +20,6 @@ export const Post = ({id, title, data, background, className}: Props) => {
     setPosts(posts.filter(post => post.id !== id))
   }
 
-  const formattedTitle = title?.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 
   return (
     <div className={`${s.container} ${className}`}>
@@ -27,7 +27,7 @@ export const Post = ({id, title, data, background, className}: Props) => {
         <img src={background || bcDefault} alt="Post background"/>
       </div>
       <div className={s.blockText}>
-        <NavLink to={'/item-post'} className={s.h2}><h2>{formattedTitle}</h2></NavLink>
+        <NavLink to={`/posts/${id}`} className={s.h2}><h2>{formattedTitle(title)}</h2></NavLink>
         <div className={s.data}>
           <p>{data}</p>
           <BtnPoly className={s.btn} onClick={() => deletePostHandle(id)}>Delete</BtnPoly>

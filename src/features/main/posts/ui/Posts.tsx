@@ -42,10 +42,10 @@ export const Posts = ({title}: Props) => {
     <section className={`${s.container}`}>
       <div className={`${s.blockNewPosts}`}>
         <div className={`${s.postOne} containerApp`}>
-          <Post id={post1?.userId} title={post1?.title} data={post1?.data} background={post1?.background}/>
+          <Post id={post1?.id} title={post1?.title} data={post1?.data} background={post1?.background}/>
           <div className={s.postTwo}>
-            <Post id={post2?.userId} title={post2?.title} data={post2?.data} background={post2?.background}/>
-            <Post id={post3?.userId} title={post3?.title} data={post3?.data} background={post3?.background}/>
+            <Post id={post2?.id} title={post2?.title} data={post2?.data} background={post2?.background}/>
+            <Post id={post3?.id} title={post3?.title} data={post3?.data} background={post3?.background}/>
           </div>
         </div>
       </div>

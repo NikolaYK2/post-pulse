@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         element: <Posts title={'Ost List'}/>,
       },
       {
-        path: 'item-post',
+        path: 'posts/:id',
         element: <ItemPost/>
       },
       {

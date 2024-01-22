@@ -15,13 +15,8 @@ export const postsApi = {
         _page: page
       }
     })
+  },
+  getPost: (id:string) => {
+    return instance.get<GetPostsType>(`posts/${id}`)
   }
-  // getPosts: ({limit = 9, page = 1}) => {
-  //   return instance.get<GetPostsType[]>('posts', {
-  //     params: {
-  //       _limit: limit,
-  //       _page: page
-  //     }
-  //   })
-  // }
 };

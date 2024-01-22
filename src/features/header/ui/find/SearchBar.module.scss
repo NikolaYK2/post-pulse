@@ -67,7 +67,7 @@
       transform: translateY(0);
       transition: transform .3s ease .3s, visibility 0s ease .1s;
 
-      &:hover{
+      &:hover path{
         fill: var(--color-medium-500);
       }
     }
