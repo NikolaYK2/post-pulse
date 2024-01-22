@@ -19,13 +19,15 @@ export const Post = ({id, title, data, background, className}: Props) => {
     setPosts(posts.filter(post => post.id !== id))
   }
 
+  const formattedTitle = title?.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
   return (
     <div className={`${s.container} ${className}`}>
       <div className={s.background}>
-        <img src={background || bcDefault} alt=""/>
+        <img src={background || bcDefault} alt="Post background"/>
       </div>
       <div className={s.blockText}>
-        <NavLink to={'/item-post'} className={s.h2}><h2>{title}</h2></NavLink>
+        <NavLink to={'/item-post'} className={s.h2}><h2>{formattedTitle}</h2></NavLink>
         <div className={s.data}>
           <p>{data}</p>
           <BtnPoly className={s.btn} onClick={() => deletePostHandle(id)}>Delete</BtnPoly>
