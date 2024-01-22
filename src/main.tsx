@@ -5,6 +5,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {Posts} from "@/features/main/posts/ui/Posts.tsx";
 import {Profile} from "@/features/main/profile/Profile.tsx";
 import {ErrorPage} from "@/common/components/ui/ErrorPage/ErrorPage.tsx";
+import {ItemPost} from "@/features/main/posts/ui/post/ItemPost/ItemPost.tsx";
 
 
 const router = createBrowserRouter([
@@ -15,7 +16,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'posts',
-        element: <Posts title={'Ost List'}/>
+        element: <Posts title={'Ost List'}/>,
+      },
+      {
+        path: 'item-post',
+        element: <ItemPost/>
       },
       {
         path: 'profile',

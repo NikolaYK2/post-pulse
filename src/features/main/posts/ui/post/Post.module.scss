@@ -47,10 +47,28 @@
     width: 100%;
     z-index: 2;
 
-    > h2 {
+    .h2 {
       font-size: clamp(var(--f-s-light), 5vw, var(--f-s-mediumL));
       margin: 0 0 10px;
       color: var(--color-light-100);
+
+      > h2 {
+        display: inline;
+        text-decoration: none;
+        background-image: linear-gradient(to bottom, var(--color-light-100) 0%, var(--color-light-100) 98%);
+        background-size: 0 1px;
+        background-repeat: no-repeat;
+        background-position: left 100%;
+        color: #fff;
+        transition: all .4s ease 0s;
+
+        &:hover {
+          background-size: 100% 1px;
+          background-position: left 100%;
+          transition: all .4s ease 0s;
+        }
+      }
+
     }
 
     .data {

@@ -2,6 +2,7 @@ import s from './Post.module.scss'
 import {BtnPoly} from "@/common/components/ui/btnPoly/BtnPoly.tsx";
 import bcDefault from '@/assets/posts/bc/bcDefault.jpg'
 import {usePosts} from "@/app/postRpovider/usePosts.tsx";
+import {NavLink} from "react-router-dom";
 
 type Props = {
   id?: number,
@@ -24,7 +25,7 @@ export const Post = ({id, title, data, background, className}: Props) => {
         <img src={background || bcDefault} alt=""/>
       </div>
       <div className={s.blockText}>
-        <h2>{title}</h2>
+        <NavLink to={'/item-post'} className={s.h2}><h2>{title}</h2></NavLink>
         <div className={s.data}>
           <p>{data}</p>
           <BtnPoly className={s.btn} onClick={() => deletePostHandle(id)}>Delete</BtnPoly>
