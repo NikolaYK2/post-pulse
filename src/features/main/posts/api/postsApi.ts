@@ -7,6 +7,8 @@ export type GetPostsType = {
   body: string,
 }
 
+export type PostCommentsType = Omit<GetPostsType, 'title'> & { name: string, email: string }
+
 export const postsApi = {
   getPosts: ({limit = 9, page = 1}) => {
     return instance.get<GetPostsType[]>('posts', {
@@ -16,7 +18,10 @@ export const postsApi = {
       }
     })
   },
-  getPost: (id:string) => {
+  getPost: (id: string) => {
     return instance.get<GetPostsType>(`posts/${id}`)
-  }
+  },
+  getPostComments: (id: string) => {
+    return instance.get<PostCommentsType[]>(`posts/${id}/comments`)
+  },
 };

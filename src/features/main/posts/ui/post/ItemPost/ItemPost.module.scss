@@ -3,7 +3,7 @@
   padding: 0 10px;
 
   .block {
-    padding: 6.59% 0 0;
+    padding: min(4.902%, 80px) 0;
 
     > h2 {
       font-size: clamp(var(--f-s-medium), 5vw, var(--f-s-big));

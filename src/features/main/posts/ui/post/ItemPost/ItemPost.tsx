@@ -1,21 +1,25 @@
 import {useFetching} from "@/common/hooks/useFetching.ts";
-import {GetPostsType, postsApi} from "@/features/main/posts/api/postsApi.ts";
+import {GetPostsType, PostCommentsType, postsApi} from "@/features/main/posts/api/postsApi.ts";
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {Loading} from "@/common/components/ui/loading/Loading.tsx";
 import {formattedTitle} from "@/common/utils/formattedTitle.ts";
 import bcDefault from '@/assets/posts/bc/bcDefault.jpg'
 import s from './ItemPost.module.scss'
+import {PostComments} from "@/features/main/posts/ui/post/ItemPost/Comments/PostComments.tsx";
 
 
 export const ItemPost = () => {
   const [post, setPost] = useState<GetPostsType | null>(null);
-
+  const [comments, setComments] = useState<PostCommentsType[] | null>(null);
+  console.log(comments)
   const {id} = useParams<{ id: string }>();
 
   const {fetchPosts, isLoading, postError} = useFetching(async () => {
-    const res = await postsApi.getPost(id!)
-    setPost(res.data)
+    const res1 = await postsApi.getPost(id!)
+    setPost(res1.data)
+    const res2 = await postsApi.getPostComments(id!)
+    setComments(res2.data)
   });
 
   useEffect(() => {
@@ -31,16 +35,19 @@ export const ItemPost = () => {
         :
         <div className={`containerApp ${s.block}`}>
           <h2>{formattedTitle(post?.title)}</h2>
+
           <div className={s.blockImg}>
             <div className={s.img}>
               <img src={bcDefault} alt="Post backraund"/>
             </div>
           </div>
+
           <div className={s.item}>
             <p>{post?.body}</p>
           </div>
         </div>
       }
+      <PostComments/>
     </div>
   );
 };

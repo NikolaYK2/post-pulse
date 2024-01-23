@@ -1,0 +1,32 @@
+.container {
+  background: var(--color-light-100);
+
+  .blockItem {
+    padding: 2.59% 0 0;
+
+    .blockComments {
+      margin: 1% 0 0;
+      word-break: break-all;
+
+      .comment {
+        font-family: var(--f-roboto);
+        margin: 0 0 2%;
+        padding: 2%;
+        background: var(--color-d-100);
+
+        > h3 {
+          font-size: var(--f-s-mediumL);
+          margin: 0 0 1%;
+          border-bottom: 1px solid var(--color-d-300);
+        }
+
+        > p {
+          font-size: var(--f-s-medium);
+          letter-spacing: var(--f-interval-normal);
+          color: var(--color-d-300);
+        }
+      }
+    }
+  }
+
+}
