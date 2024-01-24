@@ -7,11 +7,11 @@ import {useEffect, useState} from "react";
 import {PostsType} from "@/app/postRpovider/PostProvider.tsx";
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import {Loading} from "@/common/components/ui/loading/Loading.tsx";
-import s from './Posts.module.scss'
 import {Paginator} from "@/common/components/ui/paginator/Paginator.tsx";
 import {useFetching} from "@/common/hooks/useFetching.ts";
 import {postsApi} from "@/features/main/posts/api/postsApi.ts";
 import {NewPosts} from "@/features/main/posts/ui/newPosts/NewPosts.tsx";
+import s from './Posts.module.scss'
 
 type Props = {
   title: string

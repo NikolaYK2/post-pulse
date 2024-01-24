@@ -1,7 +1,7 @@
-type Props = {
+export type PropsIconSvgType = {
   name: '' | 'logo' | 'dots' | 'wave' | 'search' | 'loading'
 }
-export const IconSvg = ({name}: Props) => {
+export const IconSvg = ({name}: PropsIconSvgType) => {
   switch (name) {
     case "logo": {
       return <svg version="1.0" xmlns="http://www.w3.org/2000/svg"

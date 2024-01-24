@@ -13,34 +13,26 @@ export type PostsType = GetPostsType & {
 }
 type PostContextType = {
   posts: PostsType[];
-  // newPosts: PostsType[];
   pagination: PaginatorType;
-  // postError: string;
   search: string;
-  // isLoading: boolean;
   setPosts: Dispatch<SetStateAction<PostsType[]>>;
   setPagination: Dispatch<SetStateAction<PaginatorType>>;
   setSearch: Dispatch<SetStateAction<string>>;
   sortedPosts: (posts: PostsType[]) => PostsType[];
-  // fetchPosts: () => Promise<void>;
 }
 
 export const PostContext = createContext<PostContextType>({
   posts: [],
-  // newPosts:[],
   pagination: {
     totalCount: 0,
     page: 0,
     limit: 0
   },
-  // postError: '',
   search: '',
-  // isLoading: false,
   setPosts: () => {},
   setPagination: () => {},
   setSearch: () => {},
   sortedPosts: () => [],
-  // fetchPosts: () => Promise.resolve(),
 });
 
 type Props = {
@@ -83,33 +75,19 @@ export const PostProvider = ({children}: Props) => {
     //   background: racing
     // },
   ]);
-  // const [newPosts, setNewPosts] = useState<PostsType[]>([])
 
   const sortedPosts = (allPosts: PostsType[]) => {
     return allPosts.filter(post => post.title.toLowerCase().includes(search))
   }
 
-
-  // const {isLoading, postError, fetchPosts} = useFetching(async () => {
-  //   const res1 = await postsApi.getPosts(pagination)
-  //   setPosts(res1.data);
-  //   setPagination({...pagination, totalCount: res1.headers['x-total-count']});
-  //   const res2 = await postsApi.getPosts({limit:3, page:1})
-  //   setNewPosts(res2.data)
-  // });
-
   return (
     <PostContext.Provider value={{
       posts,
-      // newPosts,
-      // postError,
       search,
-      // isLoading,
       pagination,
       setPosts,
       setSearch,
       sortedPosts,
-      // fetchPosts,
       setPagination,
     }}>
       {children}

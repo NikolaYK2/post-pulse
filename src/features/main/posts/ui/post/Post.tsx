@@ -2,8 +2,8 @@ import {BtnPoly} from "@/common/components/ui/btnPoly/BtnPoly.tsx";
 import {usePosts} from "@/app/postRpovider/usePosts.tsx";
 import {NavLink} from "react-router-dom";
 import {formattedTitle} from "@/common/utils/formattedTitle.ts";
-import bcDefault from '@/assets/posts/bc/bcDefault.jpg'
 import s from './Post.module.scss'
+import bcDefault from "@/assets/image/bc/bcDefault.jpg";
 
 type Props = {
   id?: number,
