@@ -9,27 +9,24 @@ import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import {Loading} from "@/common/components/ui/loading/Loading.tsx";
 import s from './Posts.module.scss'
 import {Paginator} from "@/common/components/ui/paginator/Paginator.tsx";
+import {useFetching} from "@/common/hooks/useFetching.ts";
+import {postsApi} from "@/features/main/posts/api/postsApi.ts";
+import {NewPosts} from "@/features/main/posts/ui/newPosts/NewPosts.tsx";
 
 type Props = {
   title: string
 }
 export const Posts = ({title}: Props) => {
 
-  const {posts, postError, isLoading, search, sortedPosts, fetchPosts, setPagination, pagination} = usePosts()
+  const {posts, search, sortedPosts, setPosts, setPagination, pagination} = usePosts()
   const [allPosts, setAllPosts] = useState<PostsType[]>([])
-  const [newPosts, setNewPosts] = useState<PostsType[]>([])
 
+  const {postError, isLoading, fetchPosts} = useFetching(async () => {
+      const res1 = await postsApi.getPosts(pagination)
+      setPosts(res1.data);
+      setPagination({...pagination, totalCount: res1.headers['x-total-count']});
+  })
 
-  const getPost = (index: number) => {
-    if (index > posts.length) {
-      return null
-    }
-    return posts[posts.length - index]
-  }
-
-  const post1 = getPost(1);
-  const post2 = getPost(2);
-  const post3 = getPost(3);
 
   useEffect(() => {
     setAllPosts(sortedPosts(posts));
@@ -37,21 +34,14 @@ export const Posts = ({title}: Props) => {
 
 
   useEffect(() => {
-    fetchPosts().catch(e => console.error(e))
+    fetchPosts()
   }, [pagination.page]);
 
 
   return (
     <section className={`${s.container}`}>
-      <div className={`${s.blockNewPosts}`}>
-        <div className={`${s.postOne} containerApp`}>
-          <Post id={post1?.id} title={post1?.title} data={post1?.data} background={post1?.background}/>
-          <div className={s.postTwo}>
-            <Post id={post2?.id} title={post2?.title} data={post2?.data} background={post2?.background}/>
-            <Post id={post3?.id} title={post3?.title} data={post3?.data} background={post3?.background}/>
-          </div>
-        </div>
-      </div>
+
+      <NewPosts/>
 
       <div className={`${s.blockAllPosts} containerApp`}>
         <div className={s.item}>
