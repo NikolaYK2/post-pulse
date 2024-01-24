@@ -91,7 +91,7 @@ export const PostProvider = ({children}: Props) => {
   const {isLoading, postError, fetchPosts} = useFetching(async () => {
     const res = await postsApi.getPosts(pagination)
     setPosts(res.data);
-    setPagination({...pagination, totalCount: res.headers['x-total-count']})
+    setPagination({...pagination, totalCount: res.headers['x-total-count']});
   });
 
   return (

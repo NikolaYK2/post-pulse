@@ -6,7 +6,7 @@ import {MenuBurger} from "@/features/header/ui/menuBurger/MenuBurger.tsx";
 import {SearchBar} from "@/features/header/ui/find/SearchBar.tsx";
 
 export const Header = () => {
-  const pages = [{name: 'Posts', path: 'posts'}, {name: 'Profile', path: 'profile'}]
+  const pages = [{name: 'Home', path: 'home'}, {name: 'Posts', path: 'posts'}, {name: 'Profile', path: 'profile'}]
 
   const [modStyleNav, setModStyleNav] = useState('')
   const [switchNav, setSwitchNav] = useState(true)

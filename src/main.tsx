@@ -7,7 +7,6 @@ import {Profile} from "@/features/main/profile/Profile.tsx";
 import {ErrorPage} from "@/common/components/ui/ErrorPage/ErrorPage.tsx";
 import {ItemPost} from "@/features/main/posts/ui/post/ItemPost/ItemPost.tsx";
 
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -15,16 +14,20 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage/>,
     children: [
       {
+        index: true,
+      },
+      {
         path: 'posts',
         element: <Posts title={'Ost List'}/>,
       },
       {
         path: 'posts/:id',
-        element: <ItemPost/>
+        element: <ItemPost/>,
+
       },
       {
         path: 'profile',
-        element: <Profile/>
+        element: <Profile/>,
       }
     ]
   }

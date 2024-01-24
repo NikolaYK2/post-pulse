@@ -6,7 +6,7 @@ export type ButtonProps<T extends ElementType = 'button'> = {
   className?: string
   item?: string // добавлено для отображения картинки
   fullWidth?: boolean
-  variant?: 'link' | 'primary' | 'secondary' | 'tertiary'
+  variant?: 'link' | 'primary' | 'secondary' | 'tertiary' | 'input'
 } & ComponentPropsWithoutRef<T>
 
 export const BtnPoly = <T extends ElementType = 'button'>(

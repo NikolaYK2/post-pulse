@@ -17,6 +17,8 @@ export const Posts = ({title}: Props) => {
 
   const {posts, postError, isLoading, search, sortedPosts, fetchPosts, setPagination, pagination} = usePosts()
   const [allPosts, setAllPosts] = useState<PostsType[]>([])
+  const [newPosts, setNewPosts] = useState<PostsType[]>([])
+
 
   const getPost = (index: number) => {
     if (index > posts.length) {
@@ -37,6 +39,7 @@ export const Posts = ({title}: Props) => {
   useEffect(() => {
     fetchPosts().catch(e => console.error(e))
   }, [pagination.page]);
+
 
   return (
     <section className={`${s.container}`}>
