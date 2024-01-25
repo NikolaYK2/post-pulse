@@ -3,29 +3,24 @@ import {ChangeEvent, ElementType} from "react";
 import s from './Input.module.scss'
 
 
-type InputElementType =
+export type HTMLElementType =
   | HTMLInputElement
   | HTMLTextAreaElement
 
-type Props<T> = {
-  type?: string,
+type Props = {
   as: ElementType,
+  type?: string,
   inputTitle: string
-  data: string,
-  onChange: (e: ChangeEvent<T>) => void
+  value: string,
+  onChange: (e: ChangeEvent<HTMLElementType>) => void
 }
-export const Input = <T extends InputElementType>({
-                                                    data,
-                                                    onChange,
-                                                    type,
-                                                    as,
-                                                    inputTitle
-                                                  }: Props<T>) => {
+export const Input = ({value, onChange, type, as, inputTitle}: Props) => {
 
   return (
     <label className={s.input}>
       <span>{inputTitle}</span>
-      <BtnPoly className={s.teg} as={as} type={type} variant={"input"} value={data} onChange={onChange}/>
+      <BtnPoly className={s.teg} as={as} type={type} variant={"input"} value={value} onChange={onChange}/>
     </label>
   );
 };
+
