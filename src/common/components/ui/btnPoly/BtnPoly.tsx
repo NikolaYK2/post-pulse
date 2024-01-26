@@ -1,12 +1,14 @@
 import s from './BtnPoly.module.scss'
 import {ElementType, ComponentPropsWithoutRef} from "react";
 
+
+export type VariantType = 'link' | 'primary' | 'secondary' | 'tertiary' | 'input'| 'textarea'
 export type ButtonProps<T extends ElementType = 'button'> = {
-  as?: T
-  className?: string
-  item?: string // добавлено для отображения картинки
-  fullWidth?: boolean
-  variant?: 'link' | 'primary' | 'secondary' | 'tertiary' | 'input'
+  as?: T,
+  className?: string,
+  item?: string, // добавлено для отображения картинки
+  fullWidth?: boolean,
+  variant?: VariantType,
 } & ComponentPropsWithoutRef<T>
 
 export const BtnPoly = <T extends ElementType = 'button'>(

@@ -1,16 +1,17 @@
 import s from './Profile.module.scss'
-import {Form, FormDataType} from "@/features/main/profile/Form.tsx";
+import {Form} from "@/common/components/ui/form/ui/Form.tsx";
 import {usePosts} from "@/app/postRpovider/lib/usePosts.tsx";
 import {DecorativeBackground} from "@/common/components/ui/decorativeBackground/DecorativeBackground.tsx";
 import circle from "@/assets/image/profile/circle.jpg";
 import square from "@/assets/image/profile/square.jpg";
 import triangle from "@/assets/image/profile/triangle.jpg";
 import {ChangeEvent, useState} from "react";
-import {HTMLElementType} from "@/common/components/ui/Input/Input.tsx";
+import {HTMLElementType, PropsFormType} from "@/common/components/ui/Input/Input.tsx";
 import {GetPostsType} from "@/features/main/posts/api/postsApi.ts";
 
 export const Profile = () => {
   const {posts, setPosts} = usePosts()
+
   const [post, setPost] = useState<GetPostsType>({title: '', body: '', userId: 0, id: 0})
 
   const uniqueId = Date.now() + Math.random();
@@ -27,21 +28,23 @@ export const Profile = () => {
     setPost({title: '', body: '', userId: 0, id: 0})
   }
 
-  const formPosts: FormDataType[] = [
+  const formPosts: PropsFormType[] = [
     {
       title: 'Post title',
-      value: post.title,
-      as: 'input',
       type: 'text',
-      fn: addTitleHandle,
+      value: post.title,
+      onChange: addTitleHandle,
     },
 
     {
       title: 'Post Description',
+      type: 'textarea',
       value: post.body,
-      as: 'textarea',
-      type: 'text',
-      fn: addDescriptionHandle,
+      onChange: addDescriptionHandle,
+    },
+    {
+      title: 'Add Post',
+      onClick: addPostHandle,
     }
   ]
 
@@ -50,7 +53,7 @@ export const Profile = () => {
       <div className={`containerApp ${s.block}`}>
         <DecorativeBackground svgProps={[{name: 'dots'}, {name: 'wave'}]} imageProps={[circle, square, triangle]}/>
 
-        <Form title={'Provide reliable news'} titleButton={'Add Post'} dataForm={formPosts} callback={addPostHandle}/>
+        <Form title={'Provide reliable news'} dataForm={formPosts}/>
       </div>
     </section>
   );
