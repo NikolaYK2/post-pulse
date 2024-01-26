@@ -19,25 +19,29 @@ export type FormDataType = {
  * @property {(e: ChangeEvent<HTMLElementType>) => void} fn - The onChange event handler for the field.
  */
 type Props = {
+  title:string,
+  titleButton:string,
   dataForm: FormDataType[],
   callback: () => void
 }
 /**
  * The Form component takes the following props:
+ * @param {string} title - title form.
+ * @param {string} titleButton - title btn form.
  * @param {FormDataType[]} dataForm - An array of objects, each describing a form field.
  * @param {() => void} callback - A function that will be called when the form is submitted.
  */
-export const Form = ({callback, dataForm}: Props) => {
+export const Form = ({callback, dataForm, title,titleButton}: Props) => {
   return (
     <div className={s.container} onSubmit={event => event.preventDefault()}>
-      <H2 title={'Provide reliable news'} side={'left'} decoration={false}/>
+      <H2 title={title} side={'left'} decoration={false}/>
       <form className={s.form}>
 
         {dataForm.map(el => (
           <Input key={el.title} as={el.as} type={el.type} inputTitle={el.title} value={el.value} onChange={el.fn}/>
         ))}
 
-        <BtnPoly variant={'primary'} onClick={callback}>Add Post</BtnPoly>
+        <BtnPoly variant={'primary'} onClick={callback}>{titleButton}</BtnPoly>
       </form>
     </div>
   );

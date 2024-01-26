@@ -1,7 +1,7 @@
 import {IconSvg} from "@/common/components/ui/iconSvg/IconSvg.tsx";
 import s from './SearchBar.module.scss'
 import {ChangeEvent, useEffect, useState} from "react";
-import {usePosts} from "@/app/postRpovider/usePosts.tsx";
+import {usePosts} from "@/app/postRpovider/lib/usePosts.tsx";
 
 
 export const SearchBar = () => {

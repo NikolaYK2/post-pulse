@@ -1,5 +1,5 @@
 import {BtnPoly} from "@/common/components/ui/btnPoly/BtnPoly.tsx";
-import {usePosts} from "@/app/postRpovider/usePosts.tsx";
+import {usePosts} from "@/app/postRpovider/lib/usePosts.tsx";
 import {NavLink} from "react-router-dom";
 import {formattedTitle} from "@/common/utils/formattedTitle.ts";
 import s from './Post.module.scss'

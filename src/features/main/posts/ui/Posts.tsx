@@ -1,6 +1,6 @@
 import {Post} from "@/features/main/posts/ui/post/Post.tsx";
 import {H2} from "@/common/components/ui/h2/H2.tsx";
-import {usePosts} from "@/app/postRpovider/usePosts.tsx";
+import {usePosts} from "@/app/postRpovider/lib/usePosts.tsx";
 import {EmptyState} from "@/common/components/ui/emptyState/EmptyState.tsx";
 import {SortNav} from "@/features/main/posts/ui/sortNav/SortNav.tsx";
 import {useEffect, useState} from "react";

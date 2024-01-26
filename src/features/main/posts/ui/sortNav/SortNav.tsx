@@ -1,7 +1,7 @@
 import s from './SortNav.module.scss'
 import {BtnPoly} from "@/common/components/ui/btnPoly/BtnPoly.tsx";
 import {PostsType} from "@/app/postRpovider/PostProvider.tsx";
-import {usePosts} from "@/app/postRpovider/usePosts.tsx";
+import {usePosts} from "@/app/postRpovider/lib/usePosts.tsx";
 import {useState} from "react";
 
 type Props = {

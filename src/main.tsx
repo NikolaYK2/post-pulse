@@ -6,6 +6,7 @@ import {Posts} from "@/features/main/posts/ui/Posts.tsx";
 import {Profile} from "@/features/main/profile/Profile.tsx";
 import {ErrorPage} from "@/common/components/ui/ErrorPage/ErrorPage.tsx";
 import {ItemPost} from "@/features/main/posts/ui/post/ItemPost/ItemPost.tsx";
+import {Login} from "@/features/main/auth/Login.tsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: 'profile',
         element: <Profile/>,
+      },
+      {
+        path: 'login',
+        element: <Login/>,
       }
     ]
   }

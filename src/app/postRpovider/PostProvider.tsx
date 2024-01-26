@@ -15,10 +15,12 @@ type PostContextType = {
   posts: PostsType[];
   pagination: PaginatorType;
   search: string;
+  isLogged: boolean;
   setPosts: Dispatch<SetStateAction<PostsType[]>>;
   setPagination: Dispatch<SetStateAction<PaginatorType>>;
   setSearch: Dispatch<SetStateAction<string>>;
   sortedPosts: (posts: PostsType[]) => PostsType[];
+  setIsLogged: (value: boolean) => void
 }
 
 export const PostContext = createContext<PostContextType>({
@@ -29,16 +31,22 @@ export const PostContext = createContext<PostContextType>({
     limit: 0
   },
   search: '',
-  setPosts: () => {},
-  setPagination: () => {},
-  setSearch: () => {},
+  isLogged: false,
+  setPosts: () => {
+  },
+  setPagination: () => {
+  },
+  setSearch: () => {
+  },
   sortedPosts: () => [],
+  setIsLogged: () => false,
 });
 
 type Props = {
   children: ReactNode
 }
 export const PostProvider = ({children}: Props) => {
+  const [isLogged, setIsLogged] = useState(false);
   const [search, setSearch] = useState('');
   const [pagination, setPagination] = useState<PaginatorType>({limit: 9, page: 1, totalCount: 0});
   const [posts, setPosts] = useState<PostsType[]>([
@@ -85,10 +93,12 @@ export const PostProvider = ({children}: Props) => {
       posts,
       search,
       pagination,
+      isLogged,
       setPosts,
       setSearch,
       sortedPosts,
       setPagination,
+      setIsLogged,
     }}>
       {children}
     </PostContext.Provider>

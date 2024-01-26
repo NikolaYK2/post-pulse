@@ -1,6 +1,6 @@
 import s from './Profile.module.scss'
 import {Form, FormDataType} from "@/features/main/profile/Form.tsx";
-import {usePosts} from "@/app/postRpovider/usePosts.tsx";
+import {usePosts} from "@/app/postRpovider/lib/usePosts.tsx";
 import {DecorativeBackground} from "@/common/components/ui/decorativeBackground/DecorativeBackground.tsx";
 import circle from "@/assets/image/profile/circle.jpg";
 import square from "@/assets/image/profile/square.jpg";
@@ -50,7 +50,7 @@ export const Profile = () => {
       <div className={`containerApp ${s.block}`}>
         <DecorativeBackground svgProps={[{name: 'dots'}, {name: 'wave'}]} imageProps={[circle, square, triangle]}/>
 
-        <Form dataForm={formPosts} callback={addPostHandle}/>
+        <Form title={'Provide reliable news'} titleButton={'Add Post'} dataForm={formPosts} callback={addPostHandle}/>
       </div>
     </section>
   );
