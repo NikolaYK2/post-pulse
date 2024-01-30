@@ -23,24 +23,7 @@ type PostContextType = {
   setIsLogged: (value: boolean) => void
 }
 
-export const PostContext = createContext<PostContextType>({
-  posts: [],
-  pagination: {
-    totalCount: 0,
-    page: 0,
-    limit: 0
-  },
-  search: '',
-  isLogged: false,
-  setPosts: () => {
-  },
-  setPagination: () => {
-  },
-  setSearch: () => {
-  },
-  sortedPosts: () => [],
-  setIsLogged: () => false,
-});
+export const PostContext = createContext<PostContextType | null>(null);
 
 type Props = {
   children: ReactNode
