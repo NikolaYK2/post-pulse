@@ -7,6 +7,13 @@ type Props = {
   svgProps: PropsIconSvgType[],
   imageProps: string[]
 }
+/**
+ * Component for displaying a decorative background.
+ *
+ * @param {Props} props - The properties of the component.
+ * @param {PropsIconSvgType[]} props.svgProps - Array of  objects 2 svg images with properties {name: ... }.
+ * @param {string[]} props.imageProps - Array of  properties 3 images.
+ */
 export const DecorativeBackground = ({svgProps, imageProps}: Props) => {
 
   const images = imageProps.map((img, index) => ({id: index + 1, name: img}))

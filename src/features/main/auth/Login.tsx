@@ -2,6 +2,10 @@ import s from './Login.module.scss'
 import {Form} from "@/common/components/ui/form/ui/Form.tsx";
 import {ChangeEvent, useState} from "react";
 import {HTMLElementType, PropsFormType} from "@/common/components/ui/Input/Input.tsx";
+import {DecorativeBackground} from "@/common/components/ui/decorativeBackground/DecorativeBackground.tsx";
+import greating from '@/assets/image/auth/login/hi.jpg'
+import key from '@/assets/image/auth/login/key.jpg'
+import lock from '@/assets/image/auth/login/zamok.jpg'
 
 export const Login = () => {
 
@@ -40,7 +44,10 @@ export const Login = () => {
 
   return (
     <div className={s.container}>
-      <Form title={'Login'} dataForm={dataForm}/>
+      <div className={`${s.blockLogin} containerApp`}>
+        <Form title={'Login'} dataForm={dataForm}/>
+        <DecorativeBackground svgProps={[{name: 'dots'}, {name: 'wave'}]} imageProps={[greating, key, lock]}/>
+      </div>
     </div>
   );
 };

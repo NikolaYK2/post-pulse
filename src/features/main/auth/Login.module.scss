@@ -1,0 +1,11 @@
+.container {
+  background: var(--color-d-100);
+  padding: 0 0 0 0;
+
+  .blockLogin {
+    display: flex;
+    align-items: center;
+    padding: var(--pad-block-top-bot);
+  }
+}
+
