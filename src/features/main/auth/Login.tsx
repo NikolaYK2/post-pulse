@@ -6,8 +6,11 @@ import {DecorativeBackground} from "@/common/components/ui/decorativeBackground/
 import greeting from '@/assets/image/auth/login/hi.jpg'
 import key from '@/assets/image/auth/login/key.jpg'
 import lock from '@/assets/image/auth/login/zamok.jpg'
+import {useAuth} from "@/app/authProvider/lib/useAuth.ts";
 
 export const Login = () => {
+
+  const {setIsLogged} = useAuth()
 
   const [login, setLogin] = useState({email: '', password: ''})
 
@@ -21,6 +24,7 @@ export const Login = () => {
 
   const loggedIn = () => {
     setLogin({email: '', password: ''})
+    setIsLogged(true)
   }
 
   const dataForm: PropsFormType[] = [
@@ -41,8 +45,6 @@ export const Login = () => {
       onClick: loggedIn,
     },
   ]
-
-
 
 
   return (

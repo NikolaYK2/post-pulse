@@ -5,6 +5,7 @@ import {AuthProvider} from "@/app/authProvider/AuthContext.tsx";
 
 function App() {
 
+
   return (
     <AuthProvider>
       <PostProvider>

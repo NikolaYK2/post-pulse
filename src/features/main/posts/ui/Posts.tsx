@@ -17,7 +17,6 @@ type Props = {
   title: string
 }
 export const Posts = ({title}: Props) => {
-
   const {posts, search, sortedPosts, setPosts, setPagination, pagination} = usePosts()
   const [allPosts, setAllPosts] = useState<PostsType[]>([])
 
@@ -36,7 +35,6 @@ export const Posts = ({title}: Props) => {
   useEffect(() => {
     fetchPosts()
   }, [pagination.page]);
-
 
   return (
     <section className={`${s.container}`}>
