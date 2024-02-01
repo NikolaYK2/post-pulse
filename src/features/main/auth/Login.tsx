@@ -10,7 +10,7 @@ import {useAuth} from "@/app/authProvider/lib/useAuth.ts";
 
 export const Login = () => {
 
-  const {setIsLogged} = useAuth()
+  const {email, password, setIsLogged} = useAuth()
 
   const [login, setLogin] = useState({email: '', password: ''})
 
@@ -24,7 +24,7 @@ export const Login = () => {
 
   const loggedIn = () => {
     setLogin({email: '', password: ''})
-    setIsLogged(true)
+    if (login.email === email && login.password === password) setIsLogged(true)
   }
 
   const dataForm: PropsFormType[] = [
@@ -49,6 +49,12 @@ export const Login = () => {
 
   return (
     <div className={s.container}>
+
+      <div className={s.blocFree}>
+        <p>email: free@gmail.com</p>
+        <p>password: freePostPulls</p>
+      </div>
+
       <div className={`${s.blockLogin} containerApp`}>
         <Form title={'Login'} dataForm={dataForm}/>
         <DecorativeBackground svgProps={[{name: 'dots'}, {name: 'wave'}]} imageProps={[greeting, key, lock]}/>
