@@ -12,7 +12,7 @@ export const Login = () => {
 
   const {email, password, setIsLogged} = useAuth()
 
-  const [login, setLogin] = useState({email: '', password: ''})
+  const [login, setLogin] = useState({email: email, password: password})
 
   const changeEmail = (e: ChangeEvent<HTMLElementType>) => {
     setLogin({...login, email: e.currentTarget.value})
@@ -45,7 +45,6 @@ export const Login = () => {
       onClick: loggedIn,
     },
   ]
-
 
   return (
     <div className={s.container}>
