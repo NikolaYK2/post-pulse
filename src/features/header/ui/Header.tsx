@@ -4,15 +4,24 @@ import {NavLink} from "react-router-dom";
 import {useState} from "react";
 import {MenuBurger} from "@/features/header/ui/menuBurger/MenuBurger.tsx";
 import {SearchBar} from "@/features/header/ui/find/SearchBar.tsx";
+import {Off} from "@/common/components/ui/off/Off.tsx";
+import {useAuth} from "@/app/authProvider/lib/useAuth.ts";
 
 export const Header = () => {
+
   const pages = [{name: 'Home', path: 'home'}, {name: 'Posts', path: 'posts'}, {name: 'Profile', path: 'profile'}]
 
   const [modStyleNav, setModStyleNav] = useState('')
   const [switchNav, setSwitchNav] = useState(true)
 
+  const {isLogged, setIsLogged} = useAuth()
+
   const switchNavHandle = () => {
     setSwitchNav(true)
+  }
+
+  const logOut = () => {
+    setIsLogged(false)
   }
 
   return (
@@ -28,6 +37,7 @@ export const Header = () => {
 
         <SearchBar/>
 
+
         <MenuBurger setModNav={setModStyleNav} modNav={modStyleNav} switchNav={switchNav} setSwitchNav={setSwitchNav}/>
 
         <nav className={`${s.nav} ${modStyleNav}`}>
@@ -42,6 +52,9 @@ export const Header = () => {
             </li>)}
           </ul>
         </nav>
+
+        {isLogged && <Off callback={logOut}/>}
+
       </section>
     </header>
   );
