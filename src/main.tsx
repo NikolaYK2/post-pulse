@@ -14,9 +14,9 @@ const router = createBrowserRouter([
     element: <App/>,
     errorElement: <ErrorPage/>,
     children: [
-      {
-        index: true,
-      },
+      // {
+      //   index: true,
+      // },
       {
         path: 'posts',
         element: <Posts title={'Ost List'}/>,

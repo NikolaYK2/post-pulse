@@ -21,6 +21,11 @@ export const Main = () => {
     return <Loading/>
   }
 
+  if (isLoading) {
+    return <Loading/>
+  }
+
+
   return (
     <main className={s.container}>
       <Outlet/>

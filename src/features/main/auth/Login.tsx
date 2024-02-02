@@ -7,9 +7,10 @@ import greeting from '@/assets/image/auth/login/hi.jpg'
 import key from '@/assets/image/auth/login/key.jpg'
 import lock from '@/assets/image/auth/login/zamok.jpg'
 import {useAuth} from "@/app/authProvider/lib/useAuth.ts";
-import {NavLink} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 export const Login = () => {
+  const navigate = useNavigate();
 
   const {email, password, isLogged, setIsLogged} = useAuth()
 
@@ -48,7 +49,7 @@ export const Login = () => {
   ]
 
   if (isLogged){
-    return <NavLink to={'/post'}/>
+    navigate('/posts')
   }
 
   return (
