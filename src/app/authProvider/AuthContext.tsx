@@ -5,9 +5,11 @@ export const AuthContext = createContext<AuthContextType | null>(null)
 
 type AuthContextType = {
   isLogged: boolean,
+  isLoading: boolean,
   email: string,
   password: string,
   setIsLogged: (value: boolean) => void,
+  setIsLoading: (value: boolean) => void,
 }
 type Props = {
   children: ReactNode,
@@ -17,7 +19,9 @@ export const AuthProvider = ({children}: Props) => {
   const email = 'free@gmail.com'
   const password = 'freePostPulls'
 
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   const {setLocalStorage} = useLocalStorage('login', isLogged, setIsLogged)
 
@@ -26,7 +30,7 @@ export const AuthProvider = ({children}: Props) => {
   }, [isLogged]);
 
   return (
-    <AuthContext.Provider value={{email, password, isLogged, setIsLogged}}>
+    <AuthContext.Provider value={{isLoading, email, password, isLogged, setIsLogged,setIsLoading}}>
       {children}
     </AuthContext.Provider>
   );

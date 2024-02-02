@@ -7,10 +7,11 @@ import greeting from '@/assets/image/auth/login/hi.jpg'
 import key from '@/assets/image/auth/login/key.jpg'
 import lock from '@/assets/image/auth/login/zamok.jpg'
 import {useAuth} from "@/app/authProvider/lib/useAuth.ts";
+import {NavLink} from "react-router-dom";
 
 export const Login = () => {
 
-  const {email, password, setIsLogged} = useAuth()
+  const {email, password, isLogged, setIsLogged} = useAuth()
 
   const [login, setLogin] = useState({email: email, password: password})
 
@@ -45,6 +46,10 @@ export const Login = () => {
       onClick: loggedIn,
     },
   ]
+
+  if (isLogged){
+    return <NavLink to={'/post'}/>
+  }
 
   return (
     <div className={s.container}>
