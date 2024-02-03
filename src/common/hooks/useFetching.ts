@@ -1,9 +1,9 @@
 import {useState} from "react";
 
 export const useFetching = (callback: () => void) => {
+
   const [isLoading, setIsLoading] = useState(false)
   const [postError, setPostError] = useState('')
-
 
   const fetchPosts = async () => {
     setIsLoading(true)

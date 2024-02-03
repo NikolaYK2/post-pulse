@@ -37,7 +37,6 @@ export const Header = () => {
 
         <SearchBar/>
 
-
         <MenuBurger setModNav={setModStyleNav} modNav={modStyleNav} switchNav={switchNav} setSwitchNav={setSwitchNav}/>
 
         <nav className={`${s.nav} ${modStyleNav}`}>
