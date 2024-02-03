@@ -40,10 +40,10 @@ export const Posts = ({title}: Props) => {
 
   useObserver(lastElement, pagination.page < totalCount, isLoading, () => {
     setPagination({...pagination, page: pagination.page + 1})
-  })
+  });
 
   useEffect(() => {
-    fetchPosts()
+    fetchPosts();
   }, [pagination.page]);
 
   return (

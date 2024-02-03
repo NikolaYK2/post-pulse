@@ -54,12 +54,6 @@ export const Login = () => {
 
   return (
     <div className={s.container}>
-
-      <div className={s.blocFree}>
-        <p>email: free@gmail.com</p>
-        <p>password: freePostPulls</p>
-      </div>
-
       <div className={`${s.blockLogin} containerApp`}>
         <Form title={'Login'} dataForm={dataForm}/>
         <DecorativeBackground svgProps={[{name: 'dots'}, {name: 'wave'}]} imageProps={[greeting, key, lock]}/>
