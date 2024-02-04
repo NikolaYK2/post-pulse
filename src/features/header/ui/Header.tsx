@@ -9,7 +9,7 @@ import {useAuth} from "@/app/authProvider/lib/useAuth.ts";
 
 export const Header = () => {
 
-  const pages = [{name: 'Home', path: 'posts'}, {name: 'Profile', path: 'profile'}]
+  const pages = [{name: 'Posts', path: 'posts'}, {name: 'Profile', path: 'profile'}]
 
   const [modStyleNav, setModStyleNav] = useState('')
   const [switchNav, setSwitchNav] = useState(true)
