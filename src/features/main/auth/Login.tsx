@@ -1,6 +1,6 @@
 import s from './Login.module.scss'
 import {Form} from "@/common/components/ui/form/ui/Form.tsx";
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import {HTMLElementType, PropsFormType} from "@/common/components/ui/Input/Input.tsx";
 import {DecorativeBackground} from "@/common/components/ui/decorativeBackground/DecorativeBackground.tsx";
 import greeting from '@/assets/image/auth/login/hi.jpg'
@@ -8,6 +8,7 @@ import key from '@/assets/image/auth/login/key.jpg'
 import lock from '@/assets/image/auth/login/zamok.jpg'
 import {useAuth} from "@/app/authProvider/lib/useAuth.ts";
 import {useNavigate} from "react-router-dom";
+import {baseUrl} from "@/main.tsx";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -48,9 +49,9 @@ export const Login = () => {
     },
   ]
 
-  if (isLogged){
-    navigate('/posts')
-  }
+  useEffect(() => {
+    if (isLogged) navigate(`${baseUrl}posts`)
+  }, [isLogged]);
 
   return (
     <div className={s.container}>

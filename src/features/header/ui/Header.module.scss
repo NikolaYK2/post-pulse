@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   background: var(--color-light-100);
-  border-bottom: 2px solid var(--color-d-900);
+  //border-bottom: 2px solid var(--color-d-900);
   height: 100px;
   z-index: 35;
   @media (max-width: 767px) {
@@ -143,4 +143,8 @@
       }
     }
   }
+}
+
+.modContainerHeader{
+  box-shadow: 1px 1px 4px var(--color-d-900);
 }

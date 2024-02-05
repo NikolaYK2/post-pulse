@@ -3,6 +3,8 @@ import {Outlet, useNavigate} from "react-router-dom";
 import {useAuth} from "@/app/authProvider/lib/useAuth.ts";
 import {useEffect} from "react";
 import {Loading} from "@/common/components/ui/loading/Loading.tsx";
+import {baseUrl} from "@/main.tsx";
+import {Login} from "@/features/main/auth/Login.tsx";
 
 export const Main = () => {
 
@@ -12,10 +14,11 @@ export const Main = () => {
 
   useEffect(() => {
     if (!isLogged) {
-      navigate('/login');
+      navigate(`${baseUrl}login`);
     }
     setIsLoading(false)
   }, [isLogged, navigate, setIsLoading]);
+
 
   if (isLoading) {
     return <Loading/>
@@ -23,7 +26,7 @@ export const Main = () => {
 
   return (
     <main className={s.container}>
-      <Outlet/>
+      {isLogged ? <Outlet/> : <Login/>}
     </main>
   );
 };

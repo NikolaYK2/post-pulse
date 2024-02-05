@@ -1,6 +1,6 @@
 import s from './Header.module.scss'
 import {IconSvg} from "@/common/components/ui/iconSvg/IconSvg.tsx";
-import {NavLink} from "react-router-dom";
+import {NavLink, useLocation} from "react-router-dom";
 import {useState} from "react";
 import {MenuBurger} from "@/features/header/ui/menuBurger/MenuBurger.tsx";
 import {SearchBar} from "@/features/header/ui/find/SearchBar.tsx";
@@ -12,9 +12,14 @@ export const Header = () => {
   const pages = [{name: 'Posts', path: 'posts'}, {name: 'Profile', path: 'profile'}]
 
   const [modStyleNav, setModStyleNav] = useState('')
+
   const [switchNav, setSwitchNav] = useState(true)
 
   const {isLogged, setIsLogged} = useAuth()
+
+  const location = useLocation();
+  const isNestedRoute = location.pathname.startsWith('/post-pulse/') && location.pathname !== '/post-pulse/';
+  const headerStyle = isNestedRoute ? s.modContainerHeader : '';
 
   const switchNavHandle = () => {
     setSwitchNav(true)
@@ -25,7 +30,7 @@ export const Header = () => {
   }
 
   return (
-    <header className={s.container}>
+    <header className={`${s.container} ${headerStyle}`}>
       <section className={`containerApp ${s.block}`}>
         <div className={s.logo}>
           <IconSvg name={'logo'}/>

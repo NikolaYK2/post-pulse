@@ -8,9 +8,11 @@ import {ErrorPage} from "@/common/components/ui/ErrorPage/ErrorPage.tsx";
 import {ItemPost} from "@/features/main/posts/ui/post/ItemPost/ItemPost.tsx";
 import {Login} from "@/features/main/auth/Login.tsx";
 
+export const baseUrl = '/post-pulse/';
+
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: baseUrl,
     element: <App/>,
     errorElement: <ErrorPage/>,
     children: [

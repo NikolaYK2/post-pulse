@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import {formattedTitle} from "@/common/utils/formattedTitle.ts";
 import s from './Post.module.scss'
 import bcDefault from "@/assets/image/bc/bcDefault.jpg";
+import {baseUrl} from "@/main.tsx";
 
 type Props = {
   id?: number,
@@ -27,7 +28,7 @@ export const Post = ({id, title, data, background, className}: Props) => {
         <img src={background || bcDefault} alt="Post background"/>
       </div>
       <div className={s.blockText}>
-        <NavLink to={`/posts/${id}`} className={s.h2}><h2>{formattedTitle(title)}</h2></NavLink>
+        <NavLink to={`${baseUrl}posts/${id}`} className={s.h2}><h2>{formattedTitle(title)}</h2></NavLink>
         <div className={s.data}>
           <p>{data}</p>
           <BtnPoly className={s.btn} onClick={() => deletePostHandle(id)}>Delete</BtnPoly>
