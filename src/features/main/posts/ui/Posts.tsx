@@ -14,7 +14,6 @@ import s from './Posts.module.scss'
 import {useObserver} from "@/common/hooks/useObserver.tsx";
 import {Paginator} from "@/common/components/ui/paginator/Paginator.tsx";
 
-
 type Props = {
   title: string
 }
@@ -32,9 +31,7 @@ export const Posts = ({title}: Props) => {
     setPagination({...pagination, totalCount: res.headers['x-total-count']});
   })
 
-  useEffect(() => {
-    setAllPosts(sortedPosts(posts));
-  }, [posts, search, sortedPosts]);
+
 
   const totalCount = Math.ceil(pagination.totalCount / pagination.limit)
 
@@ -43,8 +40,13 @@ export const Posts = ({title}: Props) => {
   });
 
   useEffect(() => {
-    fetchPosts();
+    setAllPosts(sortedPosts(posts));
+  }, [posts, search, sortedPosts]);
+
+  useEffect(() => {
+    if (!isLoading) fetchPosts().catch(e => console.error(e));
   }, [pagination.page]);
+
 
   return (
     <section className={`${s.container}`}>
@@ -77,9 +79,11 @@ export const Posts = ({title}: Props) => {
 
             : <EmptyState title={'No Posts'}/>
           }</>
+
+          <div className={s.lastElementPost} ref={lastElement}></div>
+
         </div>
 
-        <div className={s.lastElementPost} ref={lastElement}></div>
 
         <div style={{display: 'flex'}}>
           <H2/>

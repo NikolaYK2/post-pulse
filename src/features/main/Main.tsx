@@ -8,7 +8,7 @@ import {Login} from "@/features/main/auth/Login.tsx";
 
 export const Main = () => {
 
-  const {isLogged, isLoading, setIsLoading} = useAuth()
+  const {isLogged, isLoadingAuth, setIsLoadingAuth} = useAuth()
 
   const navigate = useNavigate();
 
@@ -16,11 +16,10 @@ export const Main = () => {
     if (!isLogged) {
       navigate(`${baseUrl}login`);
     }
-    setIsLoading(false)
-  }, [isLogged, navigate, setIsLoading]);
+    setIsLoadingAuth(false)
+  }, [isLogged, navigate, setIsLoadingAuth]);
 
-
-  if (isLoading) {
+  if (isLoadingAuth) {
     return <Loading/>
   }
 
