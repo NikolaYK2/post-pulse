@@ -32,7 +32,6 @@ export const Posts = ({title}: Props) => {
   })
 
 
-
   const totalCount = Math.ceil(pagination.totalCount / pagination.limit)
 
   useObserver(lastElement, pagination.page < totalCount, isLoading, () => {
@@ -63,7 +62,6 @@ export const Posts = ({title}: Props) => {
 
           {postError && <h1>Errors!!!! {postError}</h1>}
 
-          {isLoading && <Loading/>}
 
           <>{sortedPosts(allPosts).length !== 0
             ? <TransitionGroup className={s.posts}>
@@ -78,9 +76,12 @@ export const Posts = ({title}: Props) => {
             </TransitionGroup>
 
             : <EmptyState title={'No Posts'}/>
-          }</>
+          }
+            {isLoading && <Loading/>}
 
-          {/*<div className={s.lastElementPost} ref={lastElement}></div>*/}
+          </>
+
+          <div className={s.lastElementPost} ref={lastElement}></div>
 
         </div>
 

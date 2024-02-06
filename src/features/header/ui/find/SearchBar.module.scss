@@ -25,12 +25,13 @@
         font-size: clamp(var(--f-s-light), 5vw, var(--f-s-mediumL));
         padding: 15px 25px;
         border-radius: 15px;
-        background: var(--color-light-100);
+        //background: var(--color-light-100);
         cursor: pointer;
 
         transition:
                 box-shadow .4s ease-in-out .7s,
                 transform .3s ease .3s,
+                background .3s ease .3s,
                 width .3s ease 0s;
 
 
