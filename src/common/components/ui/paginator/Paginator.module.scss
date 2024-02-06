@@ -1,6 +1,7 @@
 .container {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: end;
   flex: 0 1 auto;
   font-family: var(--f-roboto);

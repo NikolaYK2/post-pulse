@@ -80,7 +80,7 @@ export const Posts = ({title}: Props) => {
             : <EmptyState title={'No Posts'}/>
           }</>
 
-          <div className={s.lastElementPost} ref={lastElement}></div>
+          {/*<div className={s.lastElementPost} ref={lastElement}></div>*/}
 
         </div>
 

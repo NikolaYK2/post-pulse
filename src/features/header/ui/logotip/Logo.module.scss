@@ -4,16 +4,29 @@
   height: 80px;
   z-index: 1;
 
-  > svg {
-    > g {
-      fill: var(--color-medium-500);
+  &:hover {
+    > svg > g {
+      fill: var(--color-d-900);
+      transition: all .4s ease 0s;
+
     }
+
+    .text {
+      color: var(--color-medium-500);
+      transition: all .4s ease 0s;
+    }
+  }
+
+  > svg > g {
+    fill: var(--color-medium-500);
+    transition: all .4s ease 0s;
   }
 
   .text {
     font-size: var(--f-s-bigXXL);
     color: var(--color-d-900);
     margin: 0 0 0 5px;
+    transition: all .4s ease 0s;
 
     > p {
       &:last-child {
