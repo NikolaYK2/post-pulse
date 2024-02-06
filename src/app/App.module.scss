@@ -1,34 +1,6 @@
-.container {
-  //position: relative;
-
-  .bc1 {
-    position: absolute;
-    top: 0;
-    //background: red;
-    padding: 0 100% 50% 0;
-    z-index: -1;
-
-    .img{
-      position: absolute;
-      display: block;
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-    }
-  }
-  .bc2 {
-    position: absolute;
-    display: block;
-    bottom: 0;
-    background: blue;
-    //width: 100%;
-    //height: 100%;
-  }
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
-
-//.mod{
-//  display: none;
-//  width: 100%;
-//  height: 100%;
-//}

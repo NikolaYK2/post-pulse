@@ -1,18 +1,18 @@
-import {Post} from "@/features/main/posts/ui/post/Post.tsx";
 import {H2} from "@/common/components/ui/h2/H2.tsx";
 import {usePosts} from "@/app/postRpovider/lib/usePosts.tsx";
 import {EmptyState} from "@/common/components/ui/emptyState/EmptyState.tsx";
-import {SortNav} from "@/features/main/posts/ui/sortNav/SortNav.tsx";
 import {useEffect, useRef, useState} from "react";
 import {PostsType} from "@/app/postRpovider/PostProvider.tsx";
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import {Loading} from "@/common/components/ui/loading/Loading.tsx";
 import {useFetching} from "@/common/hooks/useFetching.ts";
-import {postsApi} from "@/features/main/posts/api/postsApi.ts";
-import {NewPosts} from "@/features/main/posts/ui/newPosts/NewPosts.tsx";
 import s from './Posts.module.scss'
 import {useObserver} from "@/common/hooks/useObserver.tsx";
 import {Paginator} from "@/common/components/ui/paginator/Paginator.tsx";
+import {postsApi} from "@/features/2-main/posts/api/postsApi.ts";
+import {NewPosts} from "@/features/2-main/posts/ui/newPosts/NewPosts.tsx";
+import {SortNav} from "@/features/2-main/posts/ui/sortNav/SortNav.tsx";
+import {Post} from "@/features/2-main/posts/ui/post/Post.tsx";
 
 type Props = {
   title: string

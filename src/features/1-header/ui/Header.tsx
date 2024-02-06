@@ -1,12 +1,12 @@
 import s from './Header.module.scss'
 import {NavLink, useLocation} from "react-router-dom";
 import {useState} from "react";
-import {MenuBurger} from "@/features/header/ui/menuBurger/MenuBurger.tsx";
-import {SearchBar} from "@/features/header/ui/find/SearchBar.tsx";
 import {Off} from "@/common/components/ui/off/Off.tsx";
 import {useAuth} from "@/app/authProvider/lib/useAuth.ts";
-import {Logo} from "@/features/header/ui/logotip/Logo.tsx";
 import {baseUrl} from "@/main.tsx";
+import {Logo} from "@/features/1-header/ui/logotip/Logo.tsx";
+import {SearchBar} from "@/features/1-header/ui/find/SearchBar.tsx";
+import {MenuBurger} from "@/features/1-header/ui/menuBurger/MenuBurger.tsx";
 
 export const Header = () => {
 

@@ -1,10 +1,10 @@
-import {Post} from "@/features/main/posts/ui/post/Post.tsx";
 import {useEffect, useState} from "react";
 import {PostsType} from "@/app/postRpovider/PostProvider.tsx";
 import {useFetching} from "@/common/hooks/useFetching.ts";
-import {postsApi} from "@/features/main/posts/api/postsApi.ts";
 import {Loading} from "@/common/components/ui/loading/Loading.tsx";
 import s from "./NewPosts.module.scss";
+import {postsApi} from "@/features/2-main/posts/api/postsApi.ts";
+import {Post} from "@/features/2-main/posts/ui/post/Post.tsx";
 
 export const NewPosts = () => {
 

@@ -7,7 +7,7 @@ import square from "@/assets/image/profile/square.jpg";
 import triangle from "@/assets/image/profile/triangle.jpg";
 import {ChangeEvent, useState} from "react";
 import {HTMLElementType, PropsFormType} from "@/common/components/ui/Input/Input.tsx";
-import {GetPostsType} from "@/features/main/posts/api/postsApi.ts";
+import {GetPostsType} from "@/features/2-main/posts/api/postsApi.ts";
 
 export const Profile = () => {
   const {posts, setPosts} = usePosts()

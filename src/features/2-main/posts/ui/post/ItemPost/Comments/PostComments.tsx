@@ -2,9 +2,9 @@ import {H2} from "@/common/components/ui/h2/H2.tsx";
 import {Loading} from "@/common/components/ui/loading/Loading.tsx";
 import {useFetching} from "@/common/hooks/useFetching.ts";
 import {useEffect, useState} from "react";
-import {PostCommentsType, postsApi} from "@/features/main/posts/api/postsApi.ts";
 import {useParams} from "react-router-dom";
 import s from './PostComments.module.scss'
+import {PostCommentsType, postsApi} from "@/features/2-main/posts/api/postsApi.ts";
 
 export const PostComments = () => {
   const [comments, setComments] = useState<PostCommentsType[] | null>(null);

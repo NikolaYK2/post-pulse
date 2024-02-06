@@ -1,5 +1,5 @@
 import {createContext, Dispatch, ReactNode, SetStateAction, useState} from "react";
-import {GetPostsType} from "@/features/main/posts/api/postsApi.ts";
+import {GetPostsType} from "@/features/2-main/posts/api/postsApi.ts";
 
 export type PaginatorType = {
   limit: number,

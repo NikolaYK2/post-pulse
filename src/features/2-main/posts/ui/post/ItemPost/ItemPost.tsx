@@ -1,12 +1,12 @@
 import {useFetching} from "@/common/hooks/useFetching.ts";
-import {GetPostsType, PostCommentsType, postsApi} from "@/features/main/posts/api/postsApi.ts";
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {Loading} from "@/common/components/ui/loading/Loading.tsx";
 import {formattedTitle} from "@/common/utils/formattedTitle.ts";
 import bcDefault from '@/assets/image/bc/bcDefault.jpg'
-import {PostComments} from "@/features/main/posts/ui/post/ItemPost/Comments/PostComments.tsx";
 import s from './ItemPost.module.scss'
+import {GetPostsType, PostCommentsType, postsApi} from "@/features/2-main/posts/api/postsApi.ts";
+import {PostComments} from "@/features/2-main/posts/ui/post/ItemPost/Comments/PostComments.tsx";
 
 
 export const ItemPost = () => {
