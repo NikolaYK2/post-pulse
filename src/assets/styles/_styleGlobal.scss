@@ -7,12 +7,9 @@
     padding: 0 5px;
   }
   .paddingApp{
-    padding: 8% 0 3.549%;
+    padding: min(30%, 180px) 0 3.549%;
   }
   //posts =================================
-  //.remove-btn {
-  //  margin-right: 0.5rem;
-  //}
   .app-enter {
     opacity: 0;
 
