@@ -24,7 +24,7 @@ export const NewPosts = () => {
 
 
   return (
-    <div className={`${s.blockNewPosts}`}>
+    <div className={`${s.blockNewPosts} paddingApp`}>
       {isLoading
         ?
         <Loading/>

@@ -49,7 +49,7 @@ export const Profile = () => {
   ]
 
   return (
-    <section className={s.container}>
+    <section className={`${s.container} paddingApp`}>
       <div className={`containerApp ${s.block}`}>
         <DecorativeBackground svgProps={[{name: 'dots'}, {name: 'wave'}]} imageProps={[circle, square, triangle]}/>
 
