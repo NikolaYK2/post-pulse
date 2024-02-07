@@ -3,14 +3,13 @@ import {NavLink, useLocation} from "react-router-dom";
 import {useState} from "react";
 import {Off} from "@/common/components/ui/off/Off.tsx";
 import {useAuth} from "@/app/authProvider/lib/useAuth.ts";
-import {baseUrl} from "@/main.tsx";
 import {Logo} from "@/features/1-header/ui/logotip/Logo.tsx";
 import {SearchBar} from "@/features/1-header/ui/find/SearchBar.tsx";
 import {MenuBurger} from "@/features/1-header/ui/menuBurger/MenuBurger.tsx";
 
 export const Header = () => {
 
-  const pages = [{name: 'Home', path: baseUrl}, {name: 'Posts', path: 'posts'}, {name: 'Profile', path: 'profile'}]
+  const pages = [{name: 'Home', path: 'home'}, {name: 'Posts', path: 'posts'}, {name: 'Profile', path: 'profile'}]
 
   const [modStyleNav, setModStyleNav] = useState('')
 
@@ -19,7 +18,7 @@ export const Header = () => {
   const {isLogged, setIsLogged} = useAuth()
 
   const location = useLocation();
-  const isNestedRoute = location.pathname.startsWith('/post-pulse/') && location.pathname !== '/post-pulse/';
+  const isNestedRoute = location.pathname !== '/post-pulse/home';
   const headerStyle = isNestedRoute ? s.modContainerHeader : '';
 
   const switchNavHandle = () => {

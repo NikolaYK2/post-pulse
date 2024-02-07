@@ -5,7 +5,7 @@ import {baseUrl} from "@/main.tsx";
 
 export const Logo = () => {
   return (
-    <NavLink to={baseUrl} className={s.logo}>
+    <NavLink to={`${baseUrl}home`} className={s.logo}>
       <IconSvg name={'logo'}/>
       <div className={s.text}>
         <p>ost</p>
