@@ -7,10 +7,19 @@ import square from "@/assets/image/profile/square.jpg";
 import triangle from "@/assets/image/profile/triangle.jpg";
 import {ChangeEvent, useState} from "react";
 import {HTMLElementType, PropsFormType} from "@/common/components/ui/Input/Input.tsx";
-import {GetPostsType} from "@/features/2-main/posts/api/postsApi.ts";
+import {GetPostsType, postsApi} from "@/features/2-main/posts/api/postsApi.ts";
+import {useFetching} from "@/common/hooks/useFetching.ts";
+import {useNavigate} from "react-router-dom";
+import {baseUrl} from "@/main.tsx";
 
 export const Profile = () => {
   const {posts, setPosts} = usePosts()
+
+  const navigate = useNavigate()
+  const {fetchPosts} = useFetching(async () => {
+    const res = await postsApi.addPost(post)
+    if (res.data) navigate(`${baseUrl}posts`)
+  })
 
   const [post, setPost] = useState<GetPostsType>({title: '', body: '', userId: 0, id: 0})
 
@@ -24,8 +33,11 @@ export const Profile = () => {
   }
 
   const addPostHandle = () => {
-    setPosts([...posts, {...post, id: uniqueId, userId: uniqueId}])
-    setPost({title: '', body: '', userId: 0, id: 0})
+    if (post.title !== '') {
+      fetchPosts()
+      setPosts([...posts, {...post, id: uniqueId, userId: uniqueId}])
+      setPost({title: '', body: '', userId: 0, id: 0})
+    }
   }
 
   const formPosts: PropsFormType[] = [

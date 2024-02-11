@@ -19,6 +19,7 @@ type Props = {
 }
 export const Posts = ({title}: Props) => {
 
+
   const {posts, search, sortedPosts, setPosts, setPagination, pagination} = usePosts()
 
   const [allPosts, setAllPosts] = useState<PostsType[]>([])
@@ -27,10 +28,9 @@ export const Posts = ({title}: Props) => {
 
   const {postError, isLoading, fetchPosts} = useFetching(async () => {
     const res = await postsApi.getPosts(pagination)
-    setPosts([...posts, ...res.data]);
     setPagination({...pagination, totalCount: res.headers['x-total-count']});
+    setPosts([...res.data, ...posts]);
   })
-
 
   const totalCount = Math.ceil(pagination.totalCount / pagination.limit)
 
@@ -50,7 +50,7 @@ export const Posts = ({title}: Props) => {
   return (
     <section className={`${s.container}`}>
 
-      <NewPosts/>
+      <NewPosts posts={posts}/>
 
       <div className={`${s.blockAllPosts} containerApp`}>
         <div className={s.item}>
@@ -65,7 +65,7 @@ export const Posts = ({title}: Props) => {
 
           <>{sortedPosts(allPosts).length !== 0
             ? <TransitionGroup className={s.posts}>
-              {sortedPosts(allPosts).map(post => <CSSTransition key={post.id} timeout={500} classNames='app'>
+              {sortedPosts(allPosts).reverse().map(post => <CSSTransition key={post.id} timeout={500} classNames='app'>
                   <Post id={post.id}
                         title={post.title}
                         data={post.data}

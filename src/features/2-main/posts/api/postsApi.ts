@@ -21,6 +21,9 @@ export const postsApi = {
   getPost: (id: string) => {
     return instance.get<GetPostsType>(`posts/${id}`)
   },
+  addPost: (data: GetPostsType) => {
+    return instance.post<GetPostsType>(`posts`, data)
+  },
   getPostComments: (id: string) => {
     return instance.get<PostCommentsType[]>(`posts/${id}/comments`)
   },

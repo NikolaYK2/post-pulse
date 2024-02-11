@@ -6,22 +6,23 @@ import s from "./NewPosts.module.scss";
 import {postsApi} from "@/features/2-main/posts/api/postsApi.ts";
 import {Post} from "@/features/2-main/posts/ui/post/Post.tsx";
 
-export const NewPosts = () => {
+type Props = {
+  posts: PostsType[]
+}
+export const NewPosts = ({posts}: Props) => {
 
   const [newPosts, setNewPosts] = useState<PostsType[]>([])
 
-  const {isLoading, fetchPosts} = useFetching(async () => {
-    const res2 = await postsApi.getPosts({limit: 3, page: 1})
-    setNewPosts(res2.data)
+  const {isLoading} = useFetching(async () => {
+    const res = await postsApi.getPosts({limit: 3, page: 1})
   })
-  const post1 = newPosts[0];
-  const post2 = newPosts[1];
-  const post3 = newPosts[2];
+  const post1 = newPosts[newPosts.length - 1];
+  const post2 = newPosts[newPosts.length - 2];
+  const post3 = newPosts[newPosts.length - 3];
 
   useEffect(() => {
-    fetchPosts()
-  }, []);
-
+    setNewPosts(posts)
+  }, [posts]);
 
   return (
     <div className={`${s.blockNewPosts} paddingApp`}>

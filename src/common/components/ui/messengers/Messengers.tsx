@@ -13,7 +13,7 @@ export const Messengers = ({messengers}:Props) => {
 
   return (
     <div className={s.messengers}>
-      {messengers.map(el => <a href={el.link} className={s.link}><IconSvg name={el.name}/></a>)}
+      {messengers.map(el => <a key={el.name} href={el.link} className={s.link}><IconSvg name={el.name}/></a>)}
     </div>
   );
 };

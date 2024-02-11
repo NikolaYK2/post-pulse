@@ -14,6 +14,7 @@ type Props = {
   className?: string,
 }
 export const Post = ({id, title, data, background, className}: Props) => {
+
   const {posts, setPosts} = usePosts()
 
   const deletePostHandle = (id?: number) => {
