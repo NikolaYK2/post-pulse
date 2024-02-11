@@ -1,5 +1,12 @@
 export type PropsIconSvgType = {
-  name: '' | 'logo' | 'dots' | 'wave' | 'search' | 'loading'
+  name: ''
+    | 'logo'
+    | 'dots'
+    | 'wave'
+    | 'search'
+    | 'loading'
+    | 'telegram'
+    | 'linkedin'
 }
 export const IconSvg = ({name}: PropsIconSvgType) => {
   switch (name) {
@@ -139,6 +146,48 @@ export const IconSvg = ({name}: PropsIconSvgType) => {
               transform="translate(2 2)"></path>
       </svg>
     }
+    case "telegram": {
+      return <svg id="Layer_1" version="1.1" viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width='100%'
+                  height='100%'
+      >
+        <g fill="#33b2e2">
+          <linearGradient
+            gradientUnits="userSpaceOnUse" x1="256" x2="256" y1="0" y2="510.1322">
+          </linearGradient>
+          <circle className="st0" cx="256" cy="256" r="256"/>
+          <g>
+            <path fill="#FFFFFF"
+                  d="M380.6,147.3l-45.7,230.5c0,0-6.4,16-24,8.3l-105.5-80.9L167,286.7l-64.6-21.7c0,0-9.9-3.5-10.9-11.2    c-1-7.7,11.2-11.8,11.2-11.8l256.8-100.7C359.5,141.2,380.6,131.9,380.6,147.3z"/>
+            <path fill="#D2E4F0"
+                  d="M197.2,375.2c0,0-3.1-0.3-6.9-12.4c-3.8-12.1-23.3-76.1-23.3-76.1l155.1-98.5c0,0,9-5.4,8.6,0    c0,0,1.6,1-3.2,5.4c-4.8,4.5-121.8,109.7-121.8,109.7"/>
+            <path fill="#B5CFE4" d="M245.8,336.2l-41.7,38.1c0,0-3.3,2.5-6.8,0.9l8-70.7"/>
+          </g>
+        </g>
+      </svg>
+    }
+    case "linkedin": {
+      return <svg enableBackground="new 0 0 32 32"
+                  height="100%" id="Layer_1"
+                  version="1.0"
+                  viewBox="0 0 32 32"
+                  width="100%"
+                  xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <circle
+            clipRule="evenodd" cx="16" cy="16"
+            fill="#007BB5" fillRule="evenodd" r="16"/>
+          <g>
+            <rect fill="#FFFFFF" height="14" width="4" x="7" y="11"/>
+            <path
+              d="M20.499,11c-2.791,0-3.271,1.018-3.499,2v-2h-4v14h4v-8c0-1.297,0.703-2,2-2c1.266,0,2,0.688,2,2v8h4v-7    C25,14,24.479,11,20.499,11z"
+              fill="#FFFFFF"/>
+            <circle cx="9" cy="8" fill="#FFFFFF" r="2"/>
+          </g>
+        </g>
+      </svg>
+    }
     case "loading": {
       return <svg
         width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
@@ -173,7 +222,7 @@ export const IconSvg = ({name}: PropsIconSvgType) => {
                               values="0 50 50;-45 50 50;0 50 50" keyTimes="0;0.5;1"></animateTransform>
           </path>
         </g>
-        </svg>
+      </svg>
     }
     default:
       return <svg></svg>
