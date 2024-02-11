@@ -14,7 +14,7 @@ export const NewPosts = ({posts}: Props) => {
   const [newPosts, setNewPosts] = useState<PostsType[]>([])
 
   const {isLoading} = useFetching(async () => {
-    const res = await postsApi.getPosts({limit: 3, page: 1})
+    await postsApi.getPosts({limit: 3, page: 1})
   })
   const post1 = newPosts[newPosts.length - 1];
   const post2 = newPosts[newPosts.length - 2];
