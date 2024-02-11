@@ -9,7 +9,10 @@ import {MenuBurger} from "@/features/1-header/ui/menuBurger/MenuBurger.tsx";
 
 export const Header = () => {
 
-  const pages = [{name: 'Home', path: 'home'}, {name: 'Posts', path: 'posts'}, {name: 'Profile', path: 'profile'}]
+  const pages = [
+    {name: 'Home', path: 'home'},
+    {name: 'Posts', path: 'posts'},
+    {name: 'Profile', path: 'profile'}]
 
   const [modStyleNav, setModStyleNav] = useState('')
 
@@ -39,7 +42,7 @@ export const Header = () => {
 
         <MenuBurger setModNav={setModStyleNav} modNav={modStyleNav} switchNav={switchNav} setSwitchNav={setSwitchNav}/>
 
-        <nav className={`${s.nav} ${modStyleNav}`}>
+        <nav className={`${s.nav} ${modStyleNav}`} onClick={switchNavHandle}>
           <ul>
             {pages.map(el => <li key={el.path} className={s.li}>
               <NavLink to={el.path} end

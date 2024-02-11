@@ -5,7 +5,6 @@
   z-index: 13;
 
 
-
   .find {
     display: flex;
     align-items: center;
@@ -18,73 +17,78 @@
 
       .input {
         position: absolute;
-        top: -5%;
-        right: -19px;
+        top: 24%;
+        left: 100%;
+        transform: translateX(-100%);
         width: 0;
         background: transparent;
         font-size: clamp(var(--f-s-light), 5vw, var(--f-s-mediumL));
         padding: 15px 25px;
         border-radius: 15px;
-        background: var(--color-light-100);
         cursor: pointer;
 
         transition:
                 box-shadow .4s ease-in-out .7s,
                 transform .3s ease .3s,
                 background .3s ease .3s,
+                left .3s ease 0s,
                 width .3s ease 0s;
 
 
         &:focus {
-          transform: translateY(170%);
+          transform: translateY(100px);
+          left: 0;
           width: 100%;
           box-shadow: 1px 1px 3px black;
           background: var(--color-light-100);
           cursor: text;
           transition:
-                  box-shadow .3s ease-in-out 0s,
-                  transform .3s ease .3s,
-                  width .3s ease 1s;
+                  box-shadow .1s ease-in-out 0s,
+                  background .1s ease-in-out 0s,
+          transform .3s ease .2s,
+          width .3s ease .3s,
+          left .3s ease .3s;
         }
 
         &:focus + .image {
-          transform: translate(35%, 170%);
+          transform: translate(0, 85px);
           visibility: hidden;
           transition: transform .3s ease .3s,
-          visibility 0s ease 1s;
+          visibility 0s ease .2s;
         }
       }
     }
 
 
-
     .image {
       display: flex;
       position: absolute;
-      top: 35px;
-      right: 10px;
-      width: 30px;
+      top: 50%;
+      left: 100%;
+      transform: translate(-100%, -50%);
+      width: 50px;
       height: 30px;
-      transform: translateY(0);
-      transition: transform .3s ease .3s, visibility 0s ease .1s;
+      transition: transform .3s ease .3s,
+      visibility 0s ease .5s;
 
-      &:hover path{
+      &:hover path {
         fill: var(--color-medium-500);
       }
     }
 
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 767px) {
     position: unset;
-    .input{
-      transform: translateY(50px);
+    .find label .input {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
-    .input + .image{
-      transform: translate(10px,25px);;
-      &:hover{
-        animation: none;
-      }
+    .find label .input + .image {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 }

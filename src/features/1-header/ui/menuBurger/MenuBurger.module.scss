@@ -96,15 +96,14 @@
 
 .activeNav {
   display: flex;
-  transform: translateY(100px);
   transition: all 1s ease 0s;
-
+  overflow: auto;
 }
 
 .navOff {
   @media (max-width: 767px) {
     display: flex;
-    transform: translateY(-100%);
+    transform: translateY(-200%);
     transition: all 1s ease 0s;
   }
 }
