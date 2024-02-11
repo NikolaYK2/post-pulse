@@ -9,6 +9,7 @@
 
   .blockLogin {
     display: flex;
+    flex-wrap: wrap-reverse;
     align-items: center;
     padding: var(--pad-block-top-bot);
   }

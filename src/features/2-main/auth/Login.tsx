@@ -55,7 +55,7 @@ export const Login = () => {
 
   return (
     <div className={s.container}>
-      <div className={`${s.blockLogin} containerApp`}>
+      <div className={`${s.blockLogin} containerApp paddingApp`}>
         <Form title={'Login'} dataForm={dataForm}/>
         <DecorativeBackground svgProps={[{name: 'dots'}, {name: 'wave'}]} imageProps={[greeting, key, lock]}/>
       </div>
