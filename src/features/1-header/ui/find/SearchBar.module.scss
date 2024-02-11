@@ -18,8 +18,8 @@
 
       .input {
         position: absolute;
-        top: 25%;
-        right: 0;
+        top: -5%;
+        right: -19px;
         width: 0;
         background: transparent;
         font-size: clamp(var(--f-s-light), 5vw, var(--f-s-mediumL));
@@ -48,7 +48,7 @@
         }
 
         &:focus + .image {
-          transform: translateY(290%);
+          transform: translate(35%, 170%);
           visibility: hidden;
           transition: transform .3s ease .3s,
           visibility 0s ease 1s;
@@ -81,7 +81,7 @@
       transform: translateY(50px);
     }
     .input + .image{
-      transform: translateY(50px);
+      transform: translate(10px,25px);;
       &:hover{
         animation: none;
       }

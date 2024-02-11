@@ -1,8 +1,11 @@
 .logo {
   display: flex;
   align-items: center;
-  height: 80px;
+  height: 100%;
   z-index: 1;
+  >svg{
+    width: 45px;
+  }
 
   &:hover {
     > svg > g {

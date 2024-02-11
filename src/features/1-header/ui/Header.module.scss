@@ -13,14 +13,14 @@
   transition: all 1s ease 0s;
 
   @media (max-width: 767px) {
-
+    height: 60px;
     &:after {
       position: absolute;
       top: 0;
       display: flex;
       content: '';
       width: 100%;
-      height: 100px;
+      height: 60px;
       background: var(--color-light-100);
     }
   }
