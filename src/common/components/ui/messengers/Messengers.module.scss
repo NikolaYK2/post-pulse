@@ -1,0 +1,28 @@
+.messengers {
+  display: flex;
+  justify-content: space-between;
+  max-width: 300px;
+
+  .link {
+    max-width: 40px;
+    width: 100%;
+    margin: 5%;
+    transform: unset;
+
+    svg g {
+      transition: all .3s ease 0s;
+      transform-origin: center;
+
+    }
+
+    &:hover g g {
+      transform: scale(1.5) rotate(10deg);
+      transition: all .3s ease 0s;
+    }
+
+    &:hover g {
+      transform: scale(0.7);
+      transition: all .3s ease 0s;
+    }
+  }
+}

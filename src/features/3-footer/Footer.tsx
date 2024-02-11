@@ -1,11 +1,7 @@
 import s from './Footer.module.scss'
-import {IconSvg} from "@/common/components/ui/iconSvg/IconSvg.tsx";
+import {Messengers} from "@/common/components/ui/messengers/Messengers.tsx";
 
 export const Footer = () => {
-
-  const messengers = [
-    {name: 'telegram', link: 'https://t.me/Nik_Kev'},
-    {name: 'linkedin', link: 'https://www.linkedin.com/in/nikolaj-kevlich-6a4423263/'}] as const
 
 
   return (
@@ -18,14 +14,15 @@ export const Footer = () => {
       <div className={`${s.blockFoot} containerApp`}>
 
         <div className={s.item}>
-          <div className={s.describe}>
-            <p> icon 'Bean Eater' from loading.io</p>
+          <div className={s.describeLinks}>
+            <p>icon 'Bean Eater' from loading.io</p>
             <p>icons from iconfinder.com</p>
           </div>
 
-          <div className={s.messengers}>
-            {messengers.map(el => <a href={el.link} className={s.link}><IconSvg name={el.name}/></a>)}
-          </div>
+          <Messengers messengers={[
+            {name: 'telegram', link: 'https://t.me/Nik_Kev'},
+            {name: 'linkedin', link: 'https://www.linkedin.com/in/nikolaj-kevlich-6a4423263/'},
+          ]}/>
         </div>
 
       </div>
